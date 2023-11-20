@@ -1,3 +1,5 @@
+// Nav-bar hamburger for smaller screens
+
 $(document).ready(function () {
     $(".open_bar").click(function () {
         $('.nav_contents').css("display", "block");
@@ -19,9 +21,9 @@ $(document).ready(function () {
     });
 });
 
+// Slide show on large screens
 
 let homeSlide = document.querySelectorAll(".slide");
-let current = 0;
 let i;
 
 function slideNext() {
@@ -29,7 +31,27 @@ function slideNext() {
         homeSlide[i].classList.toggle("active")
     };
 }
-
 setInterval(slideNext, 5000)
 
 
+// Slide show on small screens
+
+let smSlide = document.querySelectorAll(".sm-slide");
+let current = 0;
+
+function showSlide(index) {
+    for (let i = 0; i < smSlide.length; i++) {
+        smSlide[i].classList.remove("sm-active");
+    }
+
+    smSlide[index].classList.add("sm-active");
+}
+
+function smNext() {
+    showSlide(current);
+
+    current = (current + 1) % smSlide.length;
+}
+
+showSlide(current);
+setInterval(smNext, 5000);
