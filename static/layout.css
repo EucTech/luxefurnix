@@ -125,12 +125,12 @@ nav {
     border-radius: 50%;
     width: 1.8em;
     height: 1.8em;
+    background-color: red;
     color: #FAF6F0;
     padding: 2px;
     text-align: center;
     font-size: 12px;
 }
-
 
 .toggle {
     display: none;
@@ -411,5 +411,117 @@ nav {
 @media only screen and (max-width: 480px) {
     .home-image p {
         bottom: 5%;
+    }
+}
+
+
+/* footer section */
+footer {
+    background-color: var(--navcolor);
+    margin-top: 60px;
+}
+
+footer .footer-section {
+    width: 100%;
+    height: 100%;
+    padding: 50px 100px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+footer .last {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.footer-section img {
+    width: 90%;
+}
+
+footer .last h4 {
+    color: red;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+footer .last a {
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--navlinkcolor);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+footer .icons i {
+    color: var(--navlinkcolor);
+    font-size: 24px;
+}
+
+footer .icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+footer .icons i:hover {
+    opacity: 0.8;
+}
+
+footer .last .icons {
+    display: none;
+}
+
+
+/* Screen sizes for footer */
+
+@media only screen and (max-width: 992px) {
+    footer .footer-section {
+        padding: 50px 60px;
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    footer .footer-section {
+        padding: 40px 30px;
+        gap: 15px;
+    }
+}
+
+@media only screen and (max-width: 785px) {
+    footer .footer-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    footer .footer-section {
+        grid-template-columns: repeat(2, 2fr);
+    }
+
+    .footer-section img {
+        width: 80%;
+    }
+
+    footer .icons {
+        display: none;
+    }
+
+    footer .last .icons {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    footer .footer-section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer-section img {
+        width: 60%;
     }
 }
