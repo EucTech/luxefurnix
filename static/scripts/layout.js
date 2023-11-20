@@ -20,3 +20,16 @@ $(document).ready(function () {
 });
 
 
+let homeSlide = document.querySelectorAll(".slide");
+let current = 0;
+let i;
+
+function slideNext() {
+    for (i = 0; i < homeSlide.length; i++) {
+        homeSlide[i].classList.toggle("active")
+    };
+}
+
+setInterval(slideNext, 5000)
+
+
