@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Ubuntu', sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --goldcolor: #c7750a;
+    --navcolor: #FAF6F0;
+    --navlinkcolor: #001B79;
+    --lightgrey:#EEF5FF;
+    --lightdark:#5e5656;
+    --wheatcolor: wheat;
+}
+
+.categories {
+    width: 100%;
+    height: 25em;
+    margin-top: 60px;
+    padding: 40px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--lightgrey);
+}
+
+.categories .heading {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.categories .heading h5, a {
+    color: var(--goldcolor);
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.categories .items {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categories .items .product {
+    width: 24%;
+    height: 18em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.categories .items .product div {
+    width: 100%;
+    height: 18em;
+    overflow: hidden;
+}
+
+.categories .product h6 {
+    background-color: var(--navlinkcolor);
+    color: var(--lightgrey);
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+.categories .product h6:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+}
+
+.categories .items .product .tables {
+    background-image: url("/static/images/Tables/Table_2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.categories .items .product .chair {
+    background-image: url("/static/images/Chairs/Chair_1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.categories .items .product .sofa {
+    background-image: url("/static/images/Sofa/Sofa_1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.categories .items .product .cushion {
+    background-image: url("/static/images/Cushion/Cushion_1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
