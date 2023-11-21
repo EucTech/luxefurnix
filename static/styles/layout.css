@@ -41,6 +41,7 @@ nav {
 
 .logo {
     width: 15%;
+    cursor: pointer;
 }
 
 .nav_bar .search_bar form {
