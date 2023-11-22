@@ -1,0 +1,41 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    margin: auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.image-side, .form-side {
+    flex: 1;
+    padding: 20px;
+}
+
+.image-side img {
+    width: 100%;
+    height: auto;
+}
+
+input[type="email"], input[type="password"] {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+input[type="submit"] {
+    padding: 12px;
+    background-color: #001B79;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-left: 15px;
+}
