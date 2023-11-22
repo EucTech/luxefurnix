@@ -11,7 +11,7 @@
      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- layout css -->
-    <link rel="stylesheet" href="/static/layout.css">
+    <link rel="stylesheet" href="/static/styles/layout.css">
     
     <!-- Sign up css -->
     <link rel="stylesheet" type="text/css" href="/static/styles/signup.css">
@@ -24,7 +24,7 @@
             <img class="logo" src="/static/images/luxefurnix logo.png" alt="Luxefurnix_logo">
             <div class="search_bar">
                 <form action="">
-                    <input type="text" placeholder="Search products">
+                    <input type="text" placeholder="Search">
                     <a type="submit" href="/"><i class="fa-solid fa-magnifying-glass"></i></a>
                 </form>
             </div>
@@ -34,12 +34,13 @@
                     <li><a href="">Order</a></li>
                     <div class="cart">
                         <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                        <p>1</p>
+                        <p>0</p>
                     </div>
                     <li><a href="">Sell</a></li>
                     <li><a href="">Sign In</a></li>
                 </ul>
             </div>
+
             <div class="toggle">
                 <i class="fa-solid fa-bars open_bar"></i>
                 <i class="fa-solid fa-rectangle-xmark close_bar"></i>
@@ -50,21 +51,81 @@
 
     <div class="container">
         <div class="main">
-            <div class="image-side"></div>
             <div class="form-page">
-                <h2 class="signup-header">Sign Up</h2>
+                <h2>Sign Up</h2>
+                <div class="icons">
+                    <p>Use</p>
+                    <span><a href=""><i class="fa-brands fa-facebook-f"></i></a></span>
+                    <span><a href=""><i class="fa-brands fa-linkedin-in"></i></a></span>
+                    <span><a href=""><i class="fa-brands fa-google"></i></a></span>
+                </div>
+                <h6>or enter your</h6>
                 <form>
                     <input type="text" id="name" name="name" placeholder="Name">
                     <input type="email" id="email" name="email" placeholder="Email">
                     <input type="text" id="phone" name="phone" placeholder="Phone Number">
                     <input type="password" id="password" name="password" placeholder="Password">
                     <input type="password" id="password-confirm" name="password-confirm" placeholder="Confirm Password">
-                    <input type="submit" value="SIGN UP">
+                    <input type="submit" class="submit" value="SIGN UP">
+                    <p class="login-btn">Already have an account? &nbsp;<a href="">Login</a></p>
                 </form>
-                <p>Already have an account? <a href="">Sign In</a></p>
+            </div>
+            <div class="image-side">
+                <div>
+                    <p>Already have an account?</p>
+                    <span><a href="">LOGIN</a></span>
+                </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-section">
+            <div>
+                <a href=""><img src="/static/images/luxefurnix logo.png" alt="Luxefurnix_logo"></a>
+                <div class="icons">
+                    <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="last">
+                <h4>COMPANY</h4>
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Categories</a>
+                <a href="">Contact Us</a>
+            </div>
+
+            <div class="last">
+                <h4>PRODUCTS</h4>
+                <a href="">Tables</a>
+                <a href="">Chairs</a>
+                <a href="">Sofas</a>
+                <a href="">Cabinets</a>
+            </div>
+
+            <div class="last">
+                <h4>NEED HELP?</h4>
+                <a href="">My Order</a>
+                <a href="">My Account</a>
+                <a href="">Payment</a>
+                <a href="">Help Center</a>
+            </div>
+
+            <div class="last">
+                <h4>Contact Us</h4>
+                <a href="">customerservice@luxefurnix.com</a>
+                <div class="icons">
+                    <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
