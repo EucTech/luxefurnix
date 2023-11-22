@@ -1,28 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+     <!-- fontawesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- layout css -->
+    <link rel="stylesheet" href="/static/layout.css">
+    
+    <!-- Sign up css -->
     <link rel="stylesheet" type="text/css" href="/static/styles/signup.css">
     <title>Sign Up</title>
 </head>
+
 <body>
-  <div class="container">
-    <div class="image-side">
-        <img src="/static/images/sign_up_furniture.jpg">
+    <nav>
+        <div class="nav_bar">
+            <img class="logo" src="/static/images/luxefurnix logo.png" alt="Luxefurnix_logo">
+            <div class="search_bar">
+                <form action="">
+                    <input type="text" placeholder="Search products">
+                    <a type="submit" href="/"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </form>
+            </div>
+            <div class="nav_contents">
+                <ul class="nav_items">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Order</a></li>
+                    <div class="cart">
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                        <p>1</p>
+                    </div>
+                    <li><a href="">Sell</a></li>
+                    <li><a href="">Sign In</a></li>
+                </ul>
+            </div>
+            <div class="toggle">
+                <i class="fa-solid fa-bars open_bar"></i>
+                <i class="fa-solid fa-rectangle-xmark close_bar"></i>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="main">
+            <div class="image-side"></div>
+            <div class="form-page">
+                <h2 class="signup-header">Sign Up</h2>
+                <form>
+                    <input type="text" id="name" name="name" placeholder="Name">
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <input type="text" id="phone" name="phone" placeholder="Phone Number">
+                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="password" id="password-confirm" name="password-confirm" placeholder="Confirm Password">
+                    <input type="submit" value="SIGN UP">
+                </form>
+                <p>Already have an account? <a href="">Sign In</a></p>
+            </div>
+        </div>
     </div>
-    <div class="form-side">
-        <h2 class="signup-header">Sign Up</h2>
-        <form>
-            <input type="text" id="name" name="name" placeholder="Name">
-            <input type="email" id="email" name="email" placeholder="Email">
-            <input type="text" id="phone" name="phone" placeholder="Phone Number">
-            <input type="password" id="password" name="password" placeholder="Password">
-            <input type="password" id="password-confirm" name="password-confirm" placeholder="Confirm Password">
-            <input type="submit" value="SIGN UP">
-        </form>
-        <p>Already have an account? <a href="#">Sign In</a></p>
-    </div>
-</div>
 </body>
+
 </html>
