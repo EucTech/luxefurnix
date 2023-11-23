@@ -96,25 +96,55 @@
         </div>
     </div>
 
-    <div class="read-reviews">
-        <h3>Read reviews</h3>
-        <span></span>
-        <div class="info">
-            <img src="/static/images/default-profile.jpg" alt="">
-            <div>
-                <h4>Bunje Kelly</h4>
+    <div class="main-review">
+        <div class="read-reviews">
+            <h3>Read reviews</h3>
+            <span></span>
+            <div class="info">
+                <img src="/static/images/default-profile.jpg" alt="">
+                <div>
+                    <h4>Bunje Kelly</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <h5>Reviewed on November 23, 2023</h5>
+            <p>Absolutely thrilled with my new sofa! The elegant design enhances my living space. It's incredibly
+                comfortable and the quality is superb. A perfect addition to my home decor.</p>
+        </div>
+        <div class="write-reviews">
+            <h3>Review</h3>
+            <div class="rating-icons">
+                <h4>Your rating&nbsp<span>*</span>:</h4>
                 <div class="rating">
-                    <i class="fa-solid fa-star checked"></i>
-                    <i class="fa-solid fa-star checked"></i>
-                    <i class="fa-solid fa-star checked"></i>
-                    <i class="fa-solid fa-star checked"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                 </div>
             </div>
+            <form action="">
+                <label for="review-message">Your Review&nbsp;<span>*</span></label>
+                <textarea id="review-message" name="review-message" placeholder="Write something.."></textarea>
+                <div class="comment">
+                    <div>
+                        <label for="name">Name&nbsp;<span>*</span></label><br>
+                        <input type="text" name="name">
+                    </div>
+                    <div>
+                        <label for="email">Email&nbsp;<span>*</span></label><br>
+                        <input type="text" name="email">
+                    </div>
+                </div>
+                <input class="submit" type="submit" value="Submit">
+            </form>
         </div>
-        <h5>Reviewed on November 23, 2023</h5>
-        <p>Absolutely thrilled with my new sofa! The elegant design enhances my living space. It's incredibly
-            comfortable and the quality is superb. A perfect addition to my home decor.</p>
     </div>
 </body>
 
