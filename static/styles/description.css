@@ -402,6 +402,17 @@ ul {
 
 
 /* read-reviews section */
+.main-review {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lightgrey);
+    margin-bottom: 60px;
+    gap: 20px;
+    padding: 20px 0;
+}
 
 .read-reviews {
     width: 100%;
@@ -409,9 +420,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--lightgrey);
-    padding: 60px;
-    margin-bottom: 60px;
+    padding: 40px;
     gap: 20px;
 }
 
@@ -423,7 +432,7 @@ ul {
 
 .read-reviews span {
     border-bottom:2px solid var(--navlinkcolor);
-    width: 60%;
+    width: 100%;
 }
 
 .read-reviews .info {
@@ -433,8 +442,8 @@ ul {
 }
 
 .read-reviews .info img {
-    width: 5%;
-    height: 5%;
+    width: 8%;
+    height: 8%;
     border-radius: 50%;
 }
 
@@ -456,10 +465,117 @@ ul {
 }
 
 .read-reviews p {
-    width: 60%;
+    width: 100%;
     font-family: 'Roboto', sans-serif;
     color: black;
     font-size: 14px;
+}
+
+/* write-reviews */
+
+.main-review .write-reviews {
+    width: 60%;
+    height: 22em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 40px 0 0;
+}
+
+.main-review .write-reviews h3 {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--goldcolor);
+}
+
+.main-review .write-reviews .rating-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-review .write-reviews .rating-icons .rating {
+    font-size: 14px;
+}
+
+.main-review .write-reviews .rating-icons h4 {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--navlinkcolor);
+}
+
+.main-review .write-reviews span {
+    color: red;
+    font-size: 16px;
+}
+
+.main-review .write-reviews form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 10px;
+    
+}
+
+.main-review .write-reviews form label {
+    color: var(--navlinkcolor);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.main-review .write-reviews form textarea {
+    width: 100%;
+    height: 120px;
+    border: none;
+    outline: none;
+    padding: 15px;
+}
+
+.main-review .write-reviews form .comment {
+    display: flex;
+    width: 100%;
+    gap: 25px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+}
+
+.main-review .write-reviews form div input {
+    width: 100%;
+    height: 60%;
+    padding: 5px;
+    margin-top: 8px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    display: flex;
+    /* align-items: center;
+    justify-content: center;
+    margin: auto; */
+}
+
+.main-review .write-reviews form .submit {
+    width: 5em;
+    height: 2.5em;
+    border: none;
+    outline: none;
+    background-color: var(--goldcolor);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: auto; */
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.main-review .write-reviews form .submit:hover {
+    opacity: 0.9;
 }
 
 
@@ -481,9 +597,18 @@ ul {
 }
 
 @media only screen and (max-width: 800px) {
+    .main-review {
+        flex-direction: column;
+    }
+
+    .main-review .write-reviews {
+        width: 100%;
+        padding-left: 40px;
+    }
+
     .read-reviews .info img {
-        width: 10%;
-        height: 10%;
+        width: 12%;
+        height: 12%;
     }
 
     
@@ -491,15 +616,15 @@ ul {
 
 @media only screen and (max-width: 680px) {
     .read-reviews .info img {
-        width: 12%;
-        height: 12%;
+        width: 14%;
+        height: 14%;
     }
 }
 
 @media only screen and (max-width: 500px) {
     .read-reviews .info img {
-        width: 14%;
-        height: 14%;
+        width: 16%;
+        height: 16%;
     }
 
     .read-reviews .info h4 {
@@ -509,21 +634,21 @@ ul {
 
 @media only screen and (max-width: 480px) {
     .read-reviews .info img {
-        width: 17%;
-        height: 17%;
+        width: 19%;
+        height: 19%;
     }
 }
 
 @media only screen and (max-width: 400px) {
     .read-reviews .info img {
-        width: 18%;
-        height: 18%;
+        width: 20%;
+        height: 20%;
     }
 }
 
 @media only screen and (max-width: 378px) {
     .read-reviews .info img {
-        width: 20%;
-        height: 20%;
+        width: 22%;
+        height: 22%;
     }
 }
