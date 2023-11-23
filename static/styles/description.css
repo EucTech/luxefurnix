@@ -52,7 +52,7 @@ ul {
 .product-description .list .product-image {
     width: 100%;
     height: 28em;
-    background-image: url("/static/images/Cushion/Cushion_1.jpg");
+    background-image: url("/static/images/Chairs/Chair_1.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -141,10 +141,6 @@ ul {
     color: var(--navlinkcolor);
 }
 
-
-/* screen sizes for product-description */
-
-
 /* description-text */
 
 .product-description .description-text {
@@ -164,6 +160,52 @@ ul {
     font-family: 'Roboto', sans-serif;
 }
 
+
+/* screen sizes for product-description */
+
+@media only screen and (max-width: 1000px) {
+    .product-description .list { 
+        width: 75%;
+    }
+
+    .product-description .description-text {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .product-description .list { 
+        width: 85%;
+    }
+
+    .product-description .description-text {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 678px) {
+    .product-description .list { 
+        flex-direction: column;
+    }
+    .product-description .list .main {
+        width: 100%;
+        height: 100%;
+        border-top: none;
+        border-left: 2px solid var(--navlinkcolor);
+        padding: 15px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .product-description .list .product-image {
+        height: 20em;
+    }
+
+    .product-description .list .main h3 {
+        font-size: 20px;
+    }
+}
+
 .review-section {
     width: 100%;
     height: 100%;
@@ -181,6 +223,7 @@ ul {
     align-items: center;
     justify-content: center;
     border: 3px blue solid;
+    background-color: var(--navcolor);
     padding: 20px 0;
 }
 
@@ -261,8 +304,8 @@ ul {
     width: 12em;
     height: 100%;
     position: relative;
-    background-color: var(--lightgrey);
-    border: 1px solid var(--lightdark);
+    background-color: rgb(226, 221, 221);
+    /* border: 1px solid var(--lightdark); */
 }
 
 .review-section .main .list .rating_range .range .display-range .display-range-2 {
@@ -275,6 +318,87 @@ ul {
 
 /* screen sizes for review-section */
 
+@media only screen and (max-width: 1000px) {
+    .review-section .main {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .review-section .main {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 668px) {
+    .review-section .main {
+        height: 16em;
+    }
+
+    .review-section .main .list{
+        height: 10em;
+    }
+
+    .review-section .main .list .number_of_rates {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .review-section .main .list .number_of_rates {
+        width: 60%;
+    }
+
+    .review-section .main .list .rating_range .range .display-range {
+        width: 10em;
+    }
+
+    .review-section .main .list .rating_range .range .display-range .display-range-2 {
+        width: 6em;
+    }
+
+    .review-section .main .list .number_of_rates h4 {
+        font-size: 30px;
+    }
+
+    .review-section .main .list .number_of_rates i {
+        font-size: 14px;
+    }
+
+    .review-section .main .list .number_of_rates h5 {
+        font-size: 16px;
+    }
+
+    .review-section .main .list .rating_range .range p {
+        font-size: 16px;
+    }
+
+    .review-section .main .list .rating_range .range i {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .review-section .main .list .number_of_rates {
+        width: 50%;
+    }
+
+    .review-section .main .list .rating_range .range .display-range {
+        width: 8em;
+    }
+
+    .review-section .main .list .rating_range .range .display-range .display-range-2 {
+        width: 4em;
+    }
+
+    .review-section .main .list .number_of_rates h4 {
+        font-size: 26px;
+    }
+
+    .review-section .main .list .number_of_rates h5 {
+        font-size: 14px;
+    }
+}
 
 
 /* read-reviews section */
@@ -309,20 +433,20 @@ ul {
 }
 
 .read-reviews .info img {
-    width: 6%;
-    height: 6%;
+    width: 5;
+    height: 5%;
     border-radius: 50%;
 }
 
 .read-reviews .info h4 {
     color: var(--navlinkcolor);
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 12px;
     font-family: 'Ubuntu', sans-serif;
 }
 
 .read-reviews .info .rating i {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .read-reviews h5 {
@@ -335,4 +459,71 @@ ul {
     width: 60%;
     font-family: 'Roboto', sans-serif;
     color: black;
+    font-size: 14px;
+}
+
+
+/* screen sizes for read-reviews section */
+
+@media only screen and (max-width: 1000px) {
+    .read-reviews .info img {
+        width: 8%;
+        height: 8%;
+    }
+
+    .read-reviews span {
+        width: 100%;
+    }
+
+    .read-reviews p {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .read-reviews .info img {
+        width: 10%;
+        height: 10%;
+    }
+
+    
+}
+
+@media only screen and (max-width: 680px) {
+    .read-reviews .info img {
+        width: 12%;
+        height: 12%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .read-reviews .info img {
+        width: 14%;
+        height: 14%;
+    }
+
+    .read-reviews .info h4 {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .read-reviews .info img {
+        width: 17%;
+        height: 17%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .read-reviews .info img {
+        width: 18%;
+        height: 18%;
+    }
+}
+
+@media only screen and (max-width: 378px) {
+    .read-reviews .info img {
+        width: 20%;
+        height: 20%;
+    }
 }
