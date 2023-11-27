@@ -106,26 +106,29 @@ nav {
     color: var(--navlinkcolo);
 }
 
-.cart {
+.nav_contents .cart {
     position: relative;
 }
 
-.cart a{
+.nav_contents .cart a{
     font-size: 22px;
 }
 
-.cart a:hover{
+.nav_contents .cart a:hover{
     color: var(--goldcolor);
     border-bottom: 2px solid var(--navlinkcolor);
 }
 
-.cart p {
+.nav_contents .cart p {
     position: absolute;
     top: -35%;
     left: 40%;
     border-radius: 50%;
     width: 1.8em;
     height: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: red;
     color: #FAF6F0;
     padding: 2px;
