@@ -1,0 +1,275 @@
+{% extends "layout.html" %}
+
+{% block home_styles %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/products.css') }}">
+{% endblock %}
+
+{% block home %}
+<section>
+    <div class="home_background">
+        <div class="slide main_slide home_slider_1 active">
+            <div class="home-image">
+                <h4>Luxury Collections</h4>
+                <p>Indulge in opulence with our luxury furniture collections.</p>
+                <div class="home-image-div"><img src="{{ url_for('static', filename='images/cabinet_1.jpg') }}" alt="cabinet-image"></div>
+            </div>
+
+            <div class="home-image">
+                <h4>Compact Living Solutions</h4>
+                <p>Smart solutions for small spaces without compromising style.</p>
+                <div class="home-image-div"><img src="{{ url_for('static', filename='images/cabinet_2.jpg') }}" alt="cabinet-image"></div>
+            </div>
+        </div>
+
+        <div class="slide main_slide home_slider_2">
+            <div class="home-image">
+                <h4>Eco-Friendly Options</h4>
+                <p>Furniture that cares for your home and the planet.</p>
+                <div class="home-image-div"><img src="{{ url_for('static', filename='images/cushion_2.jpg') }}" alt="cabinet-image"></div>
+            </div>
+
+            <div class="home-image">
+                <h4>Customizable Furniture</h4>
+                <p>Express your style with our customizable furniture options.</p>
+                <div class="home-image-div"><img src="{{ url_for('static', filename='images/cushion_1.jpg') }}" alt="cushion-image"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home_slider_small">
+        <div class="home-image sm-slide slide_1 sm-active">
+            <h4>Luxury Collections</h4>
+            <p>Indulge in opulence with our luxury furniture collections.</p>
+            <!-- <div class="home-image-div"><img src="/static/images/cabinet_1.jpg" alt="cabinet-image"></div> -->
+        </div>
+
+        <div class="home-image sm-slide slide_2">
+            <h4>Compact Living Solutions</h4>
+            <p>Smart solutions for small spaces without compromising style.</p>
+            <!-- <div class="home-image-div"><img src="/static/images/cabinet_2.jpg" alt="cabinet-image"></div> -->
+        </div>
+
+        <div class="home-image sm-slide slide_3">
+            <h4>Eco-Friendly Options</h4>
+            <p>Furniture that cares for your home and the planet.</p>
+            <!-- <div class="home-image-div"><img src="/static/images/cushion_2.jpg" alt="cabinet-image"></div> -->
+        </div>
+
+        <div class="home-image sm-slide slide_4">
+            <h4>Customizable Furniture</h4>
+            <p>Express your style with our customizable furniture options.</p>
+            <!-- <div class="home-image-div"><img src="/static/images/cushion_1.jpg" alt="cushion-image"></div>> -->
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="categories">
+        <div class="heading">
+            <h5>Our Collections</h5>
+            <a href="">
+                <h5>See All</h5>
+            </a>
+        </div>
+        <div class="items">
+            <div class="product">
+                <div class="tables"></div>
+                <h6>Table</h6>
+            </div>
+
+            <div class="product">
+                <div class="chair"></div>
+                <h6>Chair</h6>
+            </div>
+
+            <div class="product">
+                <div class="sofa"></div>
+                <h6>Sofa</h6>
+            </div>
+
+            <div class="product">
+                <div class="cushion"></div>
+                <h6>Cushion</h6>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="all-products">
+        <h5>All Products</h5>
+        <div class="list">
+            <div class="items">
+                <div class="tabels_1"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Center Table</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="tabels_2"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Center Table</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="chair_1"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Cozy Chair</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="chair_2"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Cozy Chair</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="bed_1"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Cozy Bed</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="bed_2"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Cozy Bed</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="sofa_1"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Cozy Sofa</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="sofa_2"></div>
+                <div class="menu">
+                    <a href="">
+                        <h5>Cozy Sofa</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star checked"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h6>$150.00</h6>
+                    <div class="carty">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>Add to cart</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock home %}
