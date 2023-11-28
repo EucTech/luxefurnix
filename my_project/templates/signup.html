@@ -1,131 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-     <!-- fontawesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- layout css -->
-    <link rel="stylesheet" href="/static/styles/layout.css">
-    
+{% block signup_styles %}
     <!-- Sign up css -->
-    <link rel="stylesheet" type="text/css" href="/static/styles/signup.css">
-    <title>Sign Up</title>
-</head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/signup.css') }}">
+{% endblock %}
 
-<body>
-    <nav>
-        <div class="nav_bar">
-            <img class="logo" src="/static/images/luxefurnix logo.png" alt="Luxefurnix_logo">
-            <div class="search_bar">
-                <form action="">
-                    <input type="text" placeholder="Search">
-                    <a type="submit" href="/"><i class="fa-solid fa-magnifying-glass"></i></a>
-                </form>
+{% block signup %}
+<div class="form_container">
+    <div class="main">
+        <div class="form-page">
+            <h2>Sign Up</h2>
+            <div class="icons">
+                <p>Use</p>
+                <span><a href=""><i class="fa-brands fa-facebook-f"></i></a></span>
+                <span><a href=""><i class="fa-brands fa-linkedin-in"></i></a></span>
+                <span><a href=""><i class="fa-brands fa-google"></i></a></span>
             </div>
-            <div class="nav_contents">
-                <ul class="nav_items">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Order</a></li>
-                    <div class="cart">
-                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                        <p>0</p>
-                    </div>
-                    <li><a href="">Sell</a></li>
-                    <li><a href="">Sign In</a></li>
-                </ul>
-            </div>
-
-            <div class="toggle">
-                <i class="fa-solid fa-bars open_bar"></i>
-                <i class="fa-solid fa-rectangle-xmark close_bar"></i>
-            </div>
-        </div>
-    </nav>
-
-
-    <div class="container">
-        <div class="main">
-            <div class="form-page">
-                <h2>Sign Up</h2>
-                <div class="icons">
-                    <p>Use</p>
-                    <span><a href=""><i class="fa-brands fa-facebook-f"></i></a></span>
-                    <span><a href=""><i class="fa-brands fa-linkedin-in"></i></a></span>
-                    <span><a href=""><i class="fa-brands fa-google"></i></a></span>
-                </div>
-                <h6>or enter your</h6>
-                <form>
-                    <input type="text" id="name" name="name" placeholder="Name">
+            <h6>or enter your</h6>
+            <form action="" method="POST">
+                {{ form.hidden_tag() }}
+                <!-- <input type="text" id="name" name="name" placeholder="Full Name">
                     <input type="email" id="email" name="email" placeholder="Email">
                     <input type="text" id="phone" name="phone" placeholder="Phone Number">
                     <input type="password" id="password" name="password" placeholder="Password">
                     <input type="password" id="password-confirm" name="password-confirm" placeholder="Confirm Password">
                     <input type="submit" class="submit" value="SIGN UP">
-                    <p class="login-btn">Already have an account? &nbsp;<a href="">Login</a></p>
-                </form>
-            </div>
-            <div class="image-side">
-                <div>
-                    <p>Already have an account?</p>
-                    <span><a href="">LOGIN</a></span>
-                </div>
+                    <p class="login-btn">Already have an account? &nbsp;<a href="">Login</a></p> -->
+
+                {{ form.fullname(placeholder="Full Name", class="form-control") }}
+                
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(placeholder="Email", class="form-control") }}
+                {% endif %}
+
+                {% if form.phone_number.errors %}
+                    {{ form.phone_number(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.phone_number.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.phone_number(placeholder="Phone Number", class="form-control") }}
+                {% endif %}
+                
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(placeholder="Password", class="form-control") }}
+                {% endif %}
+
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(placeholder="Confirm Password", class="form-control") }}
+                {% endif %}
+
+                {{ form.submit(class="submit") }}
+
+                <p class="login-btn">Already have an account? &nbsp;<a href="{{ url_for('login') }}">Login</a></p>
+
+
+            </form>
+        </div>
+        <div class="image-side">
+            <div>
+                <p>Already have an account?</p>
+                <span><a href="{{ url_for('login') }}">LOGIN</a></span>
             </div>
         </div>
     </div>
-
-    <footer>
-        <div class="footer-section">
-            <div>
-                <a href=""><img src="/static/images/luxefurnix logo.png" alt="Luxefurnix_logo"></a>
-                <div class="icons">
-                    <a href=""><i class="fa-brands fa-square-facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="last">
-                <h4>COMPANY</h4>
-                <a href="">Home</a>
-                <a href="">About</a>
-                <a href="">Categories</a>
-                <a href="">Contact Us</a>
-            </div>
-
-            <div class="last">
-                <h4>PRODUCTS</h4>
-                <a href="">Tables</a>
-                <a href="">Chairs</a>
-                <a href="">Sofas</a>
-                <a href="">Cabinets</a>
-            </div>
-
-            <div class="last">
-                <h4>NEED HELP?</h4>
-                <a href="">My Order</a>
-                <a href="">My Account</a>
-                <a href="">Payment</a>
-                <a href="">Help Center</a>
-            </div>
-
-            <div class="last">
-                <h4>Contact Us</h4>
-                <a href="">customerservice@luxefurnix.com</a>
-                <div class="icons">
-                    <a href=""><i class="fa-brands fa-square-facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+</div>
+{% endblock %}
