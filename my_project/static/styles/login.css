@@ -13,6 +13,10 @@ a {
     text-decoration: none;
 }
 
+p {
+  margin-bottom: 0;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -26,7 +30,7 @@ ul {
     --lightdark:#5e5656;
 }
 
-.container {
+.form_container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -34,7 +38,7 @@ ul {
   justify-content: center;
 }
 
-.container .main {
+.form_container .main {
   display: flex;
   justify-items: center;
   align-content: center;
@@ -42,7 +46,7 @@ ul {
   height: 100%;
 }
 
-.container .form-page {
+.form_container .form-page {
   width: 100%;
   height: 30em;
   display: flex;
@@ -53,87 +57,87 @@ ul {
   background-color: var(--lightgrey);
 }
 
-.container .form-page h2 {
+.form_container .form-page h2 {
   color: var(--goldcolor);
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 700;
 }
 
-.container .form-page .icons {
+.form_container .form-page .icons {
   width: 100%;
   max-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
   /* border: 1px red solid; */
 }
 
-.container .form-page .icons p {
-  font-size: 14px;
+.form_container .form-page .icons p {
+  font-size: 16px;
   color: var(--navlinkcolor);
   font-family: 'Ubuntu', sans-serif;
   font-weight: 600;
 }
 
-.container .form-page .icons i {
+.form_container .form-page .icons i {
   color:var(--navlinkcolor);
   font-size: 15px;
 }
 
-.container .form-page .icons span:hover i {
+.form_container .form-page .icons span:hover i {
   color:var(--goldcolor);
   font-size: 15px;
 }
 
-.container .form-page .icons span {
+.form_container .form-page .icons span {
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  width: 10%;
-  height: 100%;
+  width: 3em;
+  height: 3em;
   border-radius: 50px;
   cursor: pointer;
 }
 
-.container .form-page .icons span:hover {
+.form_container .form-page .icons span:hover {
   background-color: var(--navcolor);
   color: white;
 }
 
-.container .form-page h6 {
+.form_container .form-page h6 {
   color: var(--navlinkcolor);
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   margin: 6px;
 }
 
-.container .form-page form {
+.form_container .form-page form {
   display: flex;
   max-width: 100%;
   max-height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
 }
 
-.container .form-page form input {
+.form_container .form-page form input {
   border: 1px var(--navlinkcolor) solid;
   padding: 10px;
   border-radius: 15px;
   outline: none;
 }
 
-.container .form-page form input::placeholder {
+.form_container .form-page form input::placeholder {
   color: var(--lightdark);
   font-family: 'Ubuntu', sans-serif;
 }
 
-.container .form-page form .submit {
+.form_container .form-page form .submit {
   width: 50%;
   border: none;
   background-color: var(--goldcolor);
@@ -142,12 +146,12 @@ ul {
   font-family: 'Roboto', sans-serif;
 }
 
-.container .form-page form .submit:hover {
+.form_container .form-page form .submit:hover {
   opacity: 0.8;
 }
 
 
-.container .image-side {
+.form_container .image-side {
   position: relative;
   width: 100%;
   height: 30em;
@@ -160,7 +164,7 @@ ul {
   background-size: cover;
 }
 
-.container .image-side div {
+.form_container .image-side div {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -175,29 +179,29 @@ ul {
   background-color: rgba(131, 126, 126, 0.301);
 }
 
-.container .image-side div p {
+.form_container .image-side div p {
   font-size: 20px;
   color: white;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 600;
 }
 
-.container .image-side div span {
+.form_container .image-side div span {
   color: white;
   border: 1px white solid;
   border-radius: 15px;
   padding: 10px 15px;
 }
 
-.container .image-side div span:hover {
+.form_container .image-side div span:hover {
   background-color:var(--navcolor);
 }
 
-.container .image-side div span:hover a {
+.form_container .image-side div span:hover a {
   color: var(--navlinkcolor);
 }
 
-.container .image-side div span a {
+.form_container .image-side div span a {
   color: white;
   font-family: 'Roboto', sans-serif;
   font-size: 19px;
@@ -212,62 +216,62 @@ ul {
 /* Screen sizes for sign up */
 
 @media only screen and (max-width: 1350px) {
-  .container .image-side div {
+  .form_container .image-side div {
     width: 70%;
   }
 
-  .container .image-side div p {
+  .form_container .image-side div p {
     font-size: 18px;
   }
 }
 
 @media only screen and (max-width: 1150px) {
-  .container .image-side div p {
+  .form_container .image-side div p {
     font-size: 17px;
   }
 }
 
 @media only screen and (max-width: 1066px) {
-  .container .main {
+  .form_container .main {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 920px) {
-  .container .main {
+  .form_container .main {
     width: 80%;
   }
 }
 
 @media only screen and (max-width: 870px) {
-  .container .main {
+  .form_container .main {
     width: 85%;
   }
 
-  .container .image-side div p {
+  .form_container .image-side div p {
     font-size: 16px;
   }
 }
-
+/* 
 @media only screen and (max-width: 780px) {
-  .container .main {
+  .form_container .main {
     margin-top: 60px;
   }
-}
+} */
 
 @media only screen and (max-width: 768px) {
-  .container .main {
+  .form_container .main {
     width: 90%;
   }
 }
 
 @media only screen and (max-width: 680px) {
-  .container .main {
+  .form_container .main {
     width: 60%;
     flex-direction: column;
   }
 
-  .container .image-side {
+  .form_container .image-side {
     display: none;
   }
 
@@ -277,26 +281,26 @@ ul {
     font-family: 'Ubuntu', sans-serif;
   }
 
-  .container .form-page form a {
+  .form_container .form-page form a {
     color: var(--goldcolor);
     font-family: 'Ubuntu', sans-serif;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .container .main {
+  .form_container .main {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 520px) {
-  .container .main {
+  .form_container .main {
     width: 80%;
   }
 }
 
 @media only screen and (max-width: 420px) {
-  .container .main {
+  .form_container .main {
     width: 90%;
   }
 }
