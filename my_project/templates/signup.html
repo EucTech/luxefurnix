@@ -19,14 +19,7 @@
             <h6>or enter your</h6>
             <form action="" method="POST">
                 {{ form.hidden_tag() }}
-                <!-- <input type="text" id="name" name="name" placeholder="Full Name">
-                    <input type="email" id="email" name="email" placeholder="Email">
-                    <input type="text" id="phone" name="phone" placeholder="Phone Number">
-                    <input type="password" id="password" name="password" placeholder="Password">
-                    <input type="password" id="password-confirm" name="password-confirm" placeholder="Confirm Password">
-                    <input type="submit" class="submit" value="SIGN UP">
-                    <p class="login-btn">Already have an account? &nbsp;<a href="">Login</a></p> -->
-
+                
                 {{ form.fullname(placeholder="Full Name", class="form-control") }}
                 
                 {% if form.email.errors %}
@@ -76,8 +69,6 @@
                 {{ form.submit(class="submit") }}
 
                 <p class="login-btn">Already have an account? &nbsp;<a href="{{ url_for('login') }}">Login</a></p>
-
-
             </form>
         </div>
         <div class="image-side">
