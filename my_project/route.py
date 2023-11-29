@@ -1,7 +1,8 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request, abort
 from my_project import app, db, bcrypt
 from my_project.forms import SignupForm, LoginForm
 from my_project.models import User
+from flask_login import login_user, current_user, logout_user
 
 
 with app.app_context():
@@ -16,6 +17,8 @@ def home():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = SignupForm()
     # To check if the form is validate when submit is clicked
     if form.validate_on_submit():
@@ -32,6 +35,23 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    return render_template("login.html")
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = LoginForm()
+    # To check if the form is validate when submit is clicked
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)  # Password is correct
+            flash('Login successful!', 'success')
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('home'))
+        else:
+            flash('Please check email and password', 'danger')
+    return render_template("login.html", title='Login', form=form)
 
 
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
