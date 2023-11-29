@@ -32,7 +32,10 @@
 
     <!-- Sign up css -->
     {% block signup_styles %}{% endblock %}
-    
+
+    <!-- login up css -->
+    {% block login_styles %}{% endblock %}
+
     <title>Luxefurnix</title>
 </head>
 
@@ -51,16 +54,30 @@
                 </form>
             </div>
             <div class="nav_contents">
-                <ul class="nav_items">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="">Order</a></li>
-                    <div class="cart">
-                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                        <p>0</p>
-                    </div>
-                    <li><a href="">Sell</a></li>
-                    <li><a href="{{ url_for('register')}}">Sign In</a></li>
-                </ul>
+                {% if current_user.is_authenticated %}
+                    <ul class="nav_items">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="">Order</a></li>
+                        <div class="cart">
+                            <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <p>0</p>
+                        </div>
+                        <li><a href="">Sell</a></li>
+                        <li><a href="">Account</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav_items">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="">Order</a></li>
+                        <div class="cart">
+                            <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <p>0</p>
+                        </div>
+                        <li><a href="">Sell</a></li>
+                        <li><a href="{{ url_for('register')}}">Sign In</a></li>
+                    </ul>
+                {% endif %}
             </div>
 
             <div class="toggle">
@@ -71,12 +88,25 @@
     </nav>
     {% endblock navbar %}
 
+    <!-- flashing messages -->
+    <div class="error-alert">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="display-msg {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
 
     {% block home %}{% endblock %}
 
     {% block signup %}{% endblock %}
 
-
+    {% block login %}{% endblock %}
+    
     <footer>
         <div class="footer-section">
             <div>
