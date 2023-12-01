@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from my_project import app, db, bcrypt
 from my_project.forms import SignupForm, LoginForm
-from my_project.models import User
+from my_project.models import User, Product, Category
 from flask_login import login_user, current_user, logout_user
 
 
@@ -12,11 +12,14 @@ with app.app_context():
 @app.route("/")
 @app.route("/home")
 def home():
+    product = Product()
+    category = Category()
     return render_template("home.html")
 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    """This the route for signup"""
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = SignupForm()
@@ -35,6 +38,7 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    """This the route for login"""
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
@@ -55,3 +59,9 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+
+@app.route("/description", methods=['GET', 'POST'])
+def description():
+    """This is the route for description"""
+    return render_template('description.html')
