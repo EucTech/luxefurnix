@@ -32,3 +32,29 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.fullname}', '{self.email}', '{self.phone_number}')"
+
+
+class Category(db.Model):
+    """This is the product category data model"""
+    id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True)
+    category_name = db.Column(db.String(100))
+    products = db.relationship('Product', back_populates='category')
+
+    def __repr__(self):
+        return f"Category'({self.category_name})'"
+
+
+class Product(db.Model):
+    """This is a data Model for products"""
+    id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True, nullable=False)
+    product_name = db.Column(db.String(100), nullable=False)
+    product_desc = db.Column(db.Text, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    color = db.Column(db.String(50), nullable=False)
+    product_images = db.Column(db.String(20), nullable=False, default='default-product.png')
+    create_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    category_id = db.Column(db.String(36), db.ForeignKey('category.id'), nullable=False)
+    category = db.relationship('Category', back_populates='products')
+
+    def __repr__(self):
+        return f"Product('{self.product_name}', '{self.product_desc}', '{self.price}', '{self.color}')"
