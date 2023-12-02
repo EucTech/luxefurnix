@@ -9,10 +9,12 @@
 <body>
     <div class="product-description">
         <div class="list">
-            <div class="product-image"></div>
+            <div class="product-image">
+                <img src="{{ url_for('static', filename='images/products/' + product.product_images) }}" alt="">
+            </div>
             <div class="main">
-                <h3>Armless Chair</h3>
-                <h4>$150.00</h4>
+                <h3>{{ product.product_name }}</h3>
+                <h4>${{ product.price }}</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star checked"></i>
                     <i class="fa-solid fa-star checked"></i>
@@ -22,7 +24,7 @@
                 </div>
                 <span>
                     <h5>Color:</h5>
-                    <h6>White</h6>
+                    <h6>{{ product.color }}</h6>
                 </span>
                 <div class="carty">
                     <i class="fa-solid fa-cart-shopping"></i>

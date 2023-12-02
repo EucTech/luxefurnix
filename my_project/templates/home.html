@@ -100,11 +100,14 @@
     <div class="all-products">
         <h5>All Products</h5>
         <div class="list">
+        {% for product in products %}
             <div class="items">
-                <div class="tabels_1"></div>
+                <div class="picture">
+                    <a href=""><img src="{{ url_for('static', filename='images/products/' + product.product_images) }}" alt=""></a>
+                </div>
                 <div class="menu">
-                    <a href="">
-                        <h5>Center Table</h5>
+                    <a href="{{ url_for('product', product_id=product.id) }}">
+                        <h5>{{ product.product_name }}</h5>
                     </a>
                     <div class="rating">
                         <i class="fa-solid fa-star checked"></i>
@@ -113,161 +116,14 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <h6>$150.00</h6>
+                    <h6>${{ product.price }}</h6>
                     <div class="carty">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <p>Add to cart</p>
                     </div>
                 </div>
             </div>
-
-            <div class="items">
-                <div class="tabels_2"></div>
-                <div class="menu">
-                    <a href="">
-                        <h5>Center Table</h5>
-                    </a>
-                    <div class="rating">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h6>$150.00</h6>
-                    <div class="carty">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="items">
-                <div class="chair_1"></div>
-                <div class="menu">
-                    <a href="">
-                        <h5>Cozy Chair</h5>
-                    </a>
-                    <div class="rating">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h6>$150.00</h6>
-                    <div class="carty">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="items">
-                <div class="chair_2"></div>
-                <div class="menu">
-                    <a href="">
-                        <h5>Cozy Chair</h5>
-                    </a>
-                    <div class="rating">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h6>$150.00</h6>
-                    <div class="carty">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="items">
-                <div class="bed_1"></div>
-                <div class="menu">
-                    <a href="">
-                        <h5>Cozy Bed</h5>
-                    </a>
-                    <div class="rating">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h6>$150.00</h6>
-                    <div class="carty">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="items">
-                <div class="bed_2"></div>
-                <div class="menu">
-                    <a href="">
-                        <h5>Cozy Bed</h5>
-                    </a>
-                    <div class="rating">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h6>$150.00</h6>
-                    <div class="carty">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="items">
-                <div class="sofa_1"></div>
-                <div class="menu">
-                    <a href="">
-                        <h5>Cozy Sofa</h5>
-                    </a>
-                    <div class="rating">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h6>$150.00</h6>
-                    <div class="carty">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="items">
-                <div class="sofa_2"></div>
-                <div class="menu">
-                    <a href="">
-                        <h5>Cozy Sofa</h5>
-                    </a>
-                    <div class="rating">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <h6>$150.00</h6>
-                    <div class="carty">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
-                    </div>
-                </div>
-            </div>
-
+        {% endfor %}
         </div>
     </div>
 </section>

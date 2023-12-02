@@ -170,6 +170,28 @@ nav {
     border-radius: 10px;
 }
 
+#myBtn {
+    display: none;
+    position: fixed;
+    align-items: center;
+    align-items: center;
+    bottom: 20px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--navlinkcolor);
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 18px; 
+  }
+  
+  #myBtn:hover {
+    background-color: var(--goldcolor);
+  }
+
 .toggle {
     display: none;
 }

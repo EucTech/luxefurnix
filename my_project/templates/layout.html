@@ -39,7 +39,11 @@
     <!-- description css -->
     {% block description_styles %}{% endblock %}
 
-    <title>Luxefurnix</title>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Luxefurnix</title>
+    {% endif %}
 </head>
 
 <body>
@@ -65,7 +69,7 @@
                             <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
                             <p>0</p>
                         </div>
-                        <li><a href="">Sell</a></li>
+                        <li><a href="{{ url_for('upload_products') }}">Sell</a></li>
                         <li><a href="">Account</a></li>
                         <li><a href="{{ url_for('logout') }}">Log out</a></li>
                     </ul>
@@ -77,8 +81,8 @@
                             <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
                             <p>0</p>
                         </div>
-                        <li><a href="">Sell</a></li>
-                        <li><a href="{{ url_for('register')}}">Sign In</a></li>
+                        <li><a href="{{ url_for('upload_products') }}">Sell</a></li>
+                        <li><a href="{{ url_for('register') }}">Sign In</a></li>
                     </ul>
                 {% endif %}
             </div>
@@ -90,6 +94,9 @@
         </div>
     </nav>
     {% endblock navbar %}
+
+    <!-- scroll to top -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>
 
     <!-- flashing messages -->
     <div class="error-alert">
@@ -111,6 +118,8 @@
     {% block login %}{% endblock %}
 
     {% block description %}{% endblock %}
+
+    {% block upload_products %}{% endblock %}
     
     <footer>
         <div class="footer-section">

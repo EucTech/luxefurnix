@@ -123,7 +123,6 @@ ul {
     background-size: cover;
 }
 
-
 /* Screen sizes for Our collections */
 
 @media only screen and (max-width: 992px) {
@@ -176,6 +175,17 @@ ul {
     padding-top: 15px;
 }
 
+.all-products .list .picture {
+    width: 100%;
+    cursor: pointer;
+}
+
+.all-products .list .picture img{
+    width: 100%;
+    height: 14em;
+    /* height: 15em; */
+}
+
 .all-products .items {
     width: 100%;
     height: 22em;
@@ -184,68 +194,13 @@ ul {
     align-items: center;
 }
 
-.all-products .items div:first-child {
+/* .all-products .items div:first-child {
     width: 100%;
     height: 20em;
     border-radius: 4px;
     overflow: hidden;
-}
+} */
 
-.all-products .items .tabels_1 {
-    background-image: url("/static/images/Tables/Table_1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.all-products .items .tabels_2 {
-    background-image: url("/static/images/Tables/Table_2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.all-products .items .chair_1 {
-    background-image: url("/static/images/Chairs/Chair_1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.all-products .items .chair_2 {
-    background-image: url("/static/images/Chairs/Chair_2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.all-products .items .bed_1 {
-    background-image: url("/static/images/Bed/Bed_1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.all-products .items .bed_2 {
-    background-image: url("/static/images/Bed/Bed_2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.all-products .items .sofa_1 {
-    background-image: url("/static/images/Sofa/Sofa_1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.all-products .items .sofa_2 {
-    background-image: url("/static/images/Sofa/Sofa_2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .all-products .items .menu {
     width: 100%;
