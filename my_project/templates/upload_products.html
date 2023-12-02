@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block upload_products %}
+    <h2>Upload Product</h2>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.product_name.label }}
+            {{ form.product_name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.product_desc.label }}
+            {{ form.product_desc(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.price.label }}
+            {{ form.price(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.color.label }}
+            {{ form.color(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.product_image.label }}
+            {{ form.product_image(class="form-control") }}
+        </div>
+
+        <!-- {{ form.submit.label }} -->
+        {{ form.submit(class="submit btn btn-primary") }}
+        <!-- <button type="submit" class="btn btn-primary">Upload</button> -->
+    </form>
+{% endblock %}
