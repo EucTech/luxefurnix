@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, TextAreaField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from my_project.models import User
 
@@ -36,3 +36,13 @@ class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
+
+
+class UploadProductForm(FlaskForm):
+    """This is a form for uploading products"""
+    product_name = StringField('Product Name', validators=[DataRequired()])
+    product_desc = TextAreaField('Product Description', validators=[DataRequired()])
+    price = FloatField('Price', validators=[DataRequired()])
+    color = StringField('Color', validators=[DataRequired()])
+    product_image = FileField('Product Image', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Upload Product')
