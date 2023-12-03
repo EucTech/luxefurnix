@@ -5,6 +5,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/description.css') }}">
 {% endblock %}
 
+<!-- jqery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- layout.js script -->
+<script defer src="{{ url_for('static', filename='scripts/description.js') }}"></script>
+
 {% block description %}
 <body>
     <div class="product-description">
