@@ -103,7 +103,7 @@ def upload_products():
     return render_template("upload_products.html", title='Upload Products', form=form)
 
 
-@app.route("/product/<string:product_id>", methods=['GET', 'POST'])
+@app.route("/products/<string:product_id>", methods=['GET', 'POST'])
 def product(product_id):
     """This is the route for products"""
     product = Product.query.get_or_404(product_id)
