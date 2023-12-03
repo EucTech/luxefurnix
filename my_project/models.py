@@ -60,3 +60,10 @@ class Product(db.Model):
     def __repr__(self):
         return f"Product('{self.product_name}', '{self.product_desc}', '{self.price}', '{self.color}')"
 
+
+class Review(db.Model):
+    """This is a data model product reviews"""
+    id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True, nullable=False)
+    review_text = db.Column(db.Text, nullable=False)
+    rating = db()
+    
