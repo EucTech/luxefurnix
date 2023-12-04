@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, TextAreaField, FloatField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, TextAreaField, FloatField, SelectField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange
 from my_project.models import User
 
 
@@ -44,5 +44,16 @@ class UploadProductForm(FlaskForm):
     product_desc = TextAreaField('Product Description', validators=[DataRequired()])
     price = FloatField('Price', validators=[DataRequired()])
     color = StringField('Color', validators=[DataRequired()])
+    category = SelectField('Category', coerce=str, validators=[DataRequired()])
     product_image = FileField('Product Image', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Upload Product')
+
+
+class ReviewForm(FlaskForm):
+    """This is a form for product reviews"""
+    review_text = TextAreaField('Review Text', validators=[DataRequired(), Length(min=1, max=500)])
+    rating = IntegerField('Rating', validators=[DataRequired(), NumberRange(min=1, max=5)])
+    fullname = StringField('Full Name', validators=
+                           [DataRequired(), Length(min=4, max=100)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Submit')
