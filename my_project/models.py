@@ -35,14 +35,14 @@ class User(db.Model, UserMixin):
         return f"User('{self.fullname}', '{self.email}', '{self.phone_number}')"
 
 
-# class Category(db.Model):
-#     """This is the product category data model"""
-#     id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True)
-#     category_name = db.Column(db.String(100))
-#     products = db.relationship('Product', back_populates='category')
+class Category(db.Model):
+    """This is the product category data model"""
+    id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True)
+    category_name = db.Column(db.String(100))
+    products = db.relationship('Product', back_populates='category',  cascade='all, delete-orphan')
 
-#     def __repr__(self):
-#         return f"Category'({self.category_name})'"
+    def __repr__(self):
+        return f"Category'({self.category_name})'"
 
 
 class Product(db.Model):
@@ -52,10 +52,10 @@ class Product(db.Model):
     product_desc = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float, nullable=False)
     color = db.Column(db.String(50), nullable=False)
-    product_images = db.Column(db.String(20), nullable=False, default='default-product.png')
+    product_images = db.Column(db.String(20), nullable=False)
     create_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    # category_id = db.Column(db.String(36), db.ForeignKey('category.id'), nullable=False)
-    # category = db.relationship('Category', back_populates='products')
+    category_id = db.Column(db.String(36), db.ForeignKey('category.id'), nullable=False)
+    category = db.relationship('Category', back_populates='products')
 
     def __repr__(self):
         return f"Product('{self.product_name}', '{self.product_desc}', '{self.price}', '{self.color}')"
@@ -64,6 +64,11 @@ class Product(db.Model):
 class Review(db.Model):
     """This is a data model product reviews"""
     id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True, nullable=False)
+    fullname = db.Column(db.String(60), nullable=False)
+    email = db.Column(db.String(200), unique=True, nullable=False)
     review_text = db.Column(db.Text, nullable=False)
-    rating = db()
-    
+    rating = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', backref='author', lazy=True)
+
