@@ -101,6 +101,7 @@
         <div class="read-reviews">
             <h3>Read reviews</h3>
             <span></span>
+            {% for review in review %}
             {% if review %}
             <div class="info">
                 <img src="/static/images/default-profile.jpg" alt="">
@@ -121,13 +122,14 @@
             {% else %}
                 <p>No review yet</p>
             {% endif %}
+            {% endfor %}
         </div>
         <div class="write-reviews">
             <h3>Review</h3>
             <form action="" method="POST">
 
                 <div class="rating-icons">
-                    <h4>Your rating&nbsp<span>*</span>:</h4>
+                    <h4>Your rating&nbsp;<span>*</span>:</h4>
                     <!-- <div class="rating" data-rating="{{ form.rating.data }}">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
