@@ -36,7 +36,8 @@ with app.app_context():
 @app.route("/home")
 def home():
     products = Product.query.all()
-    return render_template("home.html", products=products)
+    categories = Category.query.all()
+    return render_template("home.html", products=products, categories=categories)
 
 
 @app.route("/register", methods=['GET', 'POST'])
