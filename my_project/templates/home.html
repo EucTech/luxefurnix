@@ -3,6 +3,16 @@
 {% block home_styles %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/products.css') }}">
+    <!-- {% for product in categories.products %}
+    <style>
+        .categories .items .product .product_photo {
+        background-image: url("{{ url_for('static', filename='images/products/' + product.product_images)}}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+    </style>
+    {% endfor %} -->
 {% endblock %}
 
 {% block home %}
@@ -73,25 +83,15 @@
             </a>
         </div>
         <div class="items">
+            {% for category in categories%}
             <div class="product">
-                <div class="tables"></div>
-                <h6>Table</h6>
+                {% if category.products %}
+                <div class="product_photo" 
+                style="background-image: url('{{ url_for('static', filename='images/products/' + category.products[0].product_images) }}')"></div>
+                {% endif %}
+                <h6>{{ category.category_name }}</h6>
             </div>
-
-            <div class="product">
-                <div class="chair"></div>
-                <h6>Chair</h6>
-            </div>
-
-            <div class="product">
-                <div class="sofa"></div>
-                <h6>Sofa</h6>
-            </div>
-
-            <div class="product">
-                <div class="cushion"></div>
-                <h6>Cushion</h6>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
