@@ -95,14 +95,13 @@ ul {
     transform: scale(0.98);
 }
 
-.categories .items .product .tables {
-    background-image: url("/static/images/Tables/Table_2.jpg");
+.categories .items .product .product_photo {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.categories .items .product .chair {
+/* .categories .items .product .chair {
     background-image: url("/static/images/Chairs/Chair_1.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -121,7 +120,7 @@ ul {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 /* Screen sizes for Our collections */
 
