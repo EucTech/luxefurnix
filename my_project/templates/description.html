@@ -103,7 +103,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <div class="info">
                 <img src="/static/images/default-profile.jpg" alt="">
                 <div>
-                    <h4>Bunje Kelly</h4>
+                    <h4>{{ review.fullname }}</h4>
                     <div class="rating">
                         <i class="fa-solid fa-star checked"></i>
                         <i class="fa-solid fa-star checked"></i>
@@ -113,9 +113,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     </div>
                 </div>
             </div>
-            <h5>Reviewed on November 23, 2023</h5>
-            <p>Absolutely thrilled with my new sofa! The elegant design enhances my living space. It's incredibly
-                comfortable and the quality is superb. A perfect addition to my home decor.</p>
+            <h5>Reviewed on {{ review.created_at.strftime('%Y-%m-%d') }}</h5>
+            <p>{{ review.review_text }}</p>
         </div>
         <div class="write-reviews">
             <h3>Review</h3>
@@ -134,15 +133,20 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 <textarea id="review-message" name="review-message" placeholder="Write something.."></textarea>
                 <div class="comment">
                     <div>
-                        <label for="name">Name&nbsp;<span>*</span></label><br>
-                        <input type="text" name="name">
+                        <!-- <label for="name">Name&nbsp;<span>*</span></label><br>
+                        <input type="text" name="name"> -->
+                        {{ form.fullname.label }}
+                        {{ form.fullname(class="form-control ") }}
                     </div>
                     <div>
-                        <label for="email">Email&nbsp;<span>*</span></label><br>
-                        <input type="text" name="email">
+                        <!-- <label for="email">Email&nbsp;<span>*</span></label><br>
+                        <input type="text" name="email"> -->
+                        {{ form.email.label }}
+                        {{ form.email(class="form-control ") }}
                     </div>
                 </div>
-                <input class="submit" type="submit" value="Submit">
+                <!-- <input class="submit" type="submit" value="Submit"> -->
+                {{ form.submit(class="submit", value="Submit") }}
             </form>
         </div>
     </div>
