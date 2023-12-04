@@ -70,5 +70,6 @@ class Review(db.Model):
     rating = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
+    product_id = db.Column(db.String(36), db.ForeignKey('product.id'), nullable=False)
     user = db.relationship('User', backref='author', lazy=True)
 
