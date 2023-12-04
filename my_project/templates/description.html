@@ -1,19 +1,20 @@
 {% extends "layout.html" %}
 
 {% block description_styles %}
-    <!-- description css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/description.css') }}">
+<!-- description css -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/description.css') }}">
 {% endblock %}
 
 <!-- jqery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- layout.js script -->
 <script defer src="{{ url_for('static', filename='scripts/description.js') }}"></script>
 
 {% block description %}
+
 <body>
     <div class="product-description">
         <div class="list">
@@ -100,54 +101,65 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <div class="read-reviews">
             <h3>Read reviews</h3>
             <span></span>
+            {% if review %}
             <div class="info">
                 <img src="/static/images/default-profile.jpg" alt="">
                 <div>
                     <h4>{{ review.fullname }}</h4>
                     <div class="rating">
+                        <!-- <i class="fa-solid fa-star checked"></i>
                         <i class="fa-solid fa-star checked"></i>
                         <i class="fa-solid fa-star checked"></i>
                         <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i> -->
+                        {{ review.rating }}
                     </div>
                 </div>
             </div>
             <h5>Reviewed on {{ review.created_at.strftime('%Y-%m-%d') }}</h5>
             <p>{{ review.review_text }}</p>
+            {% else %}
+                <p>No review yet</p>
+            {% endif %}
         </div>
         <div class="write-reviews">
             <h3>Review</h3>
-            <div class="rating-icons">
-                <h4>Your rating&nbsp<span>*</span>:</h4>
-                <div class="rating">
+            <form action="" method="POST">
+
+                <div class="rating-icons">
+                    <h4>Your rating&nbsp<span>*</span>:</h4>
+                    <!-- <div class="rating" data-rating="{{ form.rating.data }}">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
+                </div> -->
+                    {{ form.rating(class="form-control ") }}
                 </div>
-            </div>
-            <form action="">
-                <label for="review-message">Your Review&nbsp;<span>*</span></label>
-                <textarea id="review-message" name="review-message" placeholder="Write something.."></textarea>
-                <div class="comment">
-                    <div>
-                        <!-- <label for="name">Name&nbsp;<span>*</span></label><br>
+                <div class="write_sec">
+                    {{ form.hidden_tag() }}
+                    <label for="review-message">Your Review&nbsp;<span>*</span></label>
+                    <!-- <textarea id="review-message" name="review-message" placeholder="Write something.." required>{{ form.review_text }}</textarea> -->
+                    {{ form.review_text(class="form-control", placeholder="Write something") }}
+                    <div class="comment">
+                        <div>
+                            <!-- <label for="name">Name&nbsp;<span>*</span></label><br>
                         <input type="text" name="name"> -->
-                        {{ form.fullname.label }}
-                        {{ form.fullname(class="form-control ") }}
-                    </div>
-                    <div>
-                        <!-- <label for="email">Email&nbsp;<span>*</span></label><br>
+                            {{ form.fullname.label }}
+                            {{ form.fullname(class="form-control ") }}
+                        </div>
+                        <div>
+                            <!-- <label for="email">Email&nbsp;<span>*</span></label><br>
                         <input type="text" name="email"> -->
-                        {{ form.email.label }}
-                        {{ form.email(class="form-control ") }}
+                            {{ form.email.label }}
+                            {{ form.email(class="form-control ") }}
+                        </div>
                     </div>
+                    <!-- <input class="submit" type="submit" value="Submit"> -->
+                    {{ form.submit(class="submit", value="Submit") }}
                 </div>
-                <!-- <input class="submit" type="submit" value="Submit"> -->
-                {{ form.submit(class="submit", value="Submit") }}
             </form>
         </div>
     </div>
-{% endblock %}
+    {% endblock %}
