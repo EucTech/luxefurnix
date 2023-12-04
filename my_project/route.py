@@ -3,8 +3,8 @@ import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from my_project import app, db, bcrypt
-from my_project.forms import SignupForm, LoginForm, UploadProductForm
-from my_project.models import User, Product
+from my_project.forms import SignupForm, LoginForm, UploadProductForm, ReviewForm
+from my_project.models import User, Product, Category, Review
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -12,6 +12,26 @@ with app.app_context():
     db.create_all()
 
 
+    # category1 = Category(category_name="Table")
+    # category2 = Category(category_name="Bed")
+    # category3 = Category(category_name="Chair")
+    # category4 = Category(category_name="Sofa")
+    # category5 = Category(category_name="Cabinet")
+    # db.session.add(category1)
+    # db.session.add(category2)
+    # db.session.add(category3)
+    # db.session.add(category4)
+    # db.session.add(category5)
+    # db.session.commit()
+
+    # categories = Category.query.all()
+
+    # for category in categories:
+    #     db.session.delete(category)
+
+    # db.session.commit()
+
+    
 @app.route("/")
 @app.route("/home")
 def home():
@@ -82,18 +102,37 @@ def save_pic(form_pic):
 @app.route("/upload_products", methods=['GET', 'POST'])
 @login_required
 def upload_products():
-    """This is a route that uploads products"""
+    """Route for uploading products.
+
+    This route renders a form for users to upload new products. The available
+    product categories are dynamically fetched from the database, and for each
+    category, a tuple containing its ID and name is created. These tuples are
+    then converted to strings and assigned to the choices of the 'category' field
+    in the form.
+
+    Upon form submission, the uploaded product details, including the selected
+    category ID, are processed and saved to the database. Additionally, a flash
+    message is displayed to indicate a successful product upload.
+
+    Returns:
+        If the form submission is successful, the user is redirected to the home
+        page. Otherwise, the form is rendered with the appropriate choices and
+        validation errors.
+
+    """
     form = UploadProductForm()
+    form.category.choices = [(str(category.id), category.category_name) for category in Category.query.all()]
+    
     if form.validate_on_submit():
         image_filename = save_pic(form.product_image.data)
 
         product = Product(
             product_name=form.product_name.data,
             product_desc=form.product_desc.data,
-            price=form.price.data,
+            price=round(form.price.data, 2),
             color=form.color.data,
             product_images=image_filename,
-            # category_id=
+            category_id=form.category.data
         )
 
         db.session.add(product)
@@ -107,4 +146,24 @@ def upload_products():
 def product(product_id):
     """This is the route for products"""
     product = Product.query.get_or_404(product_id)
-    return render_template('description.html', title=product.product_name, product=product)
+    form = ReviewForm()
+    review = None
+
+    # To fill the form with the current users info
+    if current_user.is_authenticated:
+        form.fullname.data = current_user.fullname
+        form.email.data = current_user.email
+
+    if form.validate_on_submit():
+        review = Review(
+            fullname=form.fullname.data,
+            email=form.email.data,
+            review_text=form.review_text.data,
+            rating=form.rating.data,
+            user_id=current_user.id
+        )
+
+        db.session.add(review)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('description.html', title=product.product_name, product=product, form=form, review=review)
