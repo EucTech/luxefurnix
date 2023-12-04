@@ -166,4 +166,4 @@ def product(product_id):
         db.session.add(review)
         db.session.commit()
         return redirect(url_for('home'))
-    return render_template('description.html', title=product.product_name, product=product, form=form, review=review)
+    return render_template('description.html', title=product.product_name, product=product, review=review, form=form)
