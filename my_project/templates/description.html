@@ -116,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <h5>Reviewed on {{ review.created_at.strftime('%Y-%m-%d') }}</h5>
+            <h5>Reviewed on {{ review.created_at.strftime('%B %d, %Y') }}</h5>
             <p>{{ review.review_text }}</p>
             {% else %}
                 <p>No review yet</p>
