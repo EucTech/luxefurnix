@@ -149,6 +149,10 @@ def product(product_id):
     form = ReviewForm()
     review = None
 
+    existing_review = Review.query.filter_by(product_id=product.id).first()
+    if existing_review:
+        review = existing_review
+
     # To fill the form with the current users info
     if current_user.is_authenticated:
         form.fullname.data = current_user.fullname
@@ -160,7 +164,8 @@ def product(product_id):
             email=form.email.data,
             review_text=form.review_text.data,
             rating=form.rating.data,
-            user_id=current_user.id
+            user_id=current_user.id,
+            product_id=product.id
         )
 
         db.session.add(review)
