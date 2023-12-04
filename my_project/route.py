@@ -150,7 +150,7 @@ def product(product_id):
     form = ReviewForm()
     review = None
 
-    existing_review = Review.query.filter_by(product_id=product.id).first()
+    existing_review = Review.query.filter_by(product_id=product.id).all()
     if existing_review:
         review = existing_review
 
