@@ -83,7 +83,7 @@
             </a>
         </div>
         <div class="items">
-            {% for category in categories%}
+            {% for category in categories %}
             <div class="product">
                 {% if category.products %}
                 <div class="product_photo" 
@@ -103,7 +103,7 @@
         {% for product in products %}
             <div class="items">
                 <div class="picture">
-                    <a href="{{ url_for('product', product_id=product.id) }}"><img src="{{ url_for('static', filename='images/products/' + product.product_images) }}" alt=""></a>
+                    <a href="{{ url_for('product', product_id=product.id) }}"><img src="{{ url_for('static', filename='images/products/' + product.product_images) }}" alt=""></a>                    
                 </div>
                 <div class="menu">
                     <a href="{{ url_for('product', product_id=product.id) }}">
