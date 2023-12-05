@@ -11,26 +11,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 with app.app_context():
     db.create_all()
 
-
-    # category1 = Category(category_name="Table")
-    # category2 = Category(category_name="Bed")
-    # category3 = Category(category_name="Chair")
-    # category4 = Category(category_name="Sofa")
-    # category5 = Category(category_name="Cabinet")
-    # db.session.add(category1)
-    # db.session.add(category2)
-    # db.session.add(category3)
-    # db.session.add(category4)
-    # db.session.add(category5)
-    # db.session.commit()
-
-    # categories = Category.query.all()
-
-    # for category in categories:
-    #     db.session.delete(category)
-
-    # db.session.commit()
-
     
 @app.route("/")
 @app.route("/home")
@@ -152,6 +132,12 @@ def product(product_id):
     existing_review = Review.query.filter_by(product_id=product.id).all()
     if existing_review:
         review = existing_review
+        
+    # To fill the form with the current users info
+    if current_user.is_authenticated:
+        form.fullname.data = current_user.fullname
+        form.email.data = current_user.email
+        
     return render_template('description.html', title=product.product_name, product=product, form=form, review=review)
 
 
@@ -164,12 +150,6 @@ def submit_review(product_id):
     product = Product.query.get_or_404(product_id)
     form = ReviewForm()
     review = ""
-
-    # To fill the form with the current users info
-    if current_user.is_authenticated:
-        form.fullname.data = current_user.fullname
-        form.email.data = current_user.email
-
 
     if form.validate_on_submit():
         review = Review(
