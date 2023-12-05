@@ -130,7 +130,7 @@ def upload_products():
         product = Product(
             product_name=form.product_name.data,
             product_desc=form.product_desc.data,
-            price=round(form.price.data, 2),
+            price="{:.2f}".format(form.price.data),
             color=form.color.data,
             product_images=image_filename,
             category_id=form.category.data
@@ -143,21 +143,33 @@ def upload_products():
     return render_template("upload_products.html", title='Upload Products', form=form)
 
 
-@app.route("/products/<string:product_id>", methods=['GET', 'POST'])
+@app.route("/products/<string:product_id>", methods=['GET'])
 def product(product_id):
-    """This is the route for products"""
+    """This is the route for viewimg products through their ID"""
     product = Product.query.get_or_404(product_id)
     form = ReviewForm()
-    review = None
-
+    review = ""
     existing_review = Review.query.filter_by(product_id=product.id).all()
     if existing_review:
         review = existing_review
+    return render_template('description.html', title=product.product_name, product=product, form=form, review=review)
+
+
+@app.route("/products/<string:product_id>", methods=['POST'])
+@login_required
+def submit_review(product_id):
+    """This is the route for viewimg products and
+        writing product reviews and submit
+    """
+    product = Product.query.get_or_404(product_id)
+    form = ReviewForm()
+    review = ""
 
     # To fill the form with the current users info
     if current_user.is_authenticated:
         form.fullname.data = current_user.fullname
         form.email.data = current_user.email
+
 
     if form.validate_on_submit():
         review = Review(
