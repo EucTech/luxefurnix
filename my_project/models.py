@@ -37,7 +37,7 @@ class User(db.Model, UserMixin):
 
 class Category(db.Model):
     """This is the product category data model"""
-    id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True)
+    id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True, nullable=False)
     category_name = db.Column(db.String(100))
     products = db.relationship('Product', back_populates='category',  cascade='all, delete-orphan')
 
@@ -56,6 +56,7 @@ class Product(db.Model):
     create_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     category_id = db.Column(db.String(36), db.ForeignKey('category.id'), nullable=False)
     category = db.relationship('Category', back_populates='products')
+    reviews = db.relationship('Review', back_populates='products')
 
     def __repr__(self):
         return f"Product('{self.product_name}', '{self.product_desc}', '{self.price}', '{self.color}')"
@@ -70,6 +71,7 @@ class Review(db.Model):
     rating = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
-    product_id = db.Column(db.String(36), db.ForeignKey('product.id'), nullable=False)
+    product_id = db.Column(db.String(36), db.ForeignKey('product.id', ondelete='CASCADE'), nullable=False)
+    products = db.relationship('Product', back_populates='reviews')
     user = db.relationship('User', backref='author', lazy=True)
 
