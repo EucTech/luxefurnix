@@ -10,8 +10,20 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 with app.app_context():
     db.create_all()
-
     
+    
+    # c = Category(category_name="Table")
+    # c1 = Category(category_name="Chair")
+    # c2 = Category(category_name="Bed")
+    # c3 = Category(category_name="Sofa")
+    # c4 = Category(category_name="Cabinet")
+    # db.session.add(c)
+    # db.session.add(c1)
+    # db.session.add(c2)
+    # db.session.add(c3)
+    # db.session.add(c4)
+    # db.session.commit()
+   
 @app.route("/")
 @app.route("/home")
 def home():
@@ -110,7 +122,7 @@ def upload_products():
         product = Product(
             product_name=form.product_name.data,
             product_desc=form.product_desc.data,
-            price="{:.2f}".format(form.price.data),
+            price=form.price.data,
             color=form.color.data,
             product_images=image_filename,
             category_id=form.category.data
