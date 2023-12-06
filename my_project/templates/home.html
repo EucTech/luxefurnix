@@ -116,7 +116,7 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <h6>${{ product.price }}</h6>
+                    <h6>${{'%0.2f'|format(product.price|float) }}</h6>
                     <div class="carty">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <p>Add to cart</p>
