@@ -261,6 +261,7 @@ nav {
 
     .toggle {
         display: block;
+        cursor: pointer;
     }
 
     .toggle .close_bar{
