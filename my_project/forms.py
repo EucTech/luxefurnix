@@ -57,3 +57,8 @@ class ReviewForm(FlaskForm):
                            [DataRequired(), Length(min=4, max=100)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Submit')
+
+
+class ShoppingCartForm(FlaskForm):
+    """This is a form for shopping cart"""
+    quantity = IntegerField('Quantity', validators=[DataRequired(), NumberRange(min=1)])
