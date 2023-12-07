@@ -3,8 +3,8 @@ import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from my_project import app, db, bcrypt
-from my_project.forms import SignupForm, LoginForm, UploadProductForm, ReviewForm
-from my_project.models import User, Product, Category, Review
+from my_project.forms import SignupForm, LoginForm, UploadProductForm, ReviewForm, ShoppingCartForm
+from my_project.models import User, Product, Category, Review, ShoppingCart
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -177,3 +177,29 @@ def submit_review(product_id):
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('description.html', title=product.product_name, product=product, review=review, form=form)
+
+
+@app.route("/shopping-cart/>", methods=['GET', 'POST'])
+@login_required
+def view_cart():
+    """This a route to view for cart"""
+    form = ShoppingCartForm()
+    cart = ShoppingCart.query.all()
+    
+    return render_template('shopping_cart.html', cart=cart, form=form)
+
+
+@app.route("/shopping-cart/<string:product_id>", methods=['POST'])
+@login_required
+def shopping_cart(product_id):
+    """This a route for cart"""
+    form = ShoppingCartForm()
+    
+    cart = ShoppingCart(
+        quantity=form.quantity.data,
+        user_id=current_user.id,
+        product_id=product.id
+    )
+    
+    return render_template('shopping_cart.html', form=form, cart=cart)
+    
