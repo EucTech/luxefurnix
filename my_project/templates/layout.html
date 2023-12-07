@@ -21,6 +21,9 @@
     <!-- layout.js script -->
     <script defer src="{{ url_for('static', filename='scripts/layout.js') }}"></script>
 
+    <!-- shopping_cart.js script -->
+    {% block shopping_cart_js %}{% endblock %}
+
     <!-- favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/luxefurnix_favicon.png') }}">
 
@@ -38,6 +41,9 @@
 
     <!-- description css -->
     {% block description_styles %}{% endblock %}
+
+    <!-- shopping_cart css -->
+    {% block shopping_cart_style %}{% endblock %}
 
     {% if title %}
         <title>{{ title }}</title>
@@ -66,7 +72,7 @@
                         <li><a href="{{ url_for('home') }}">Home</a></li>
                         <li><a href="">Order</a></li>
                         <div class="cart">
-                            <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="{{ url_for('view_cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                             <p>0</p>
                         </div>
                         <li><a href="{{ url_for('upload_products') }}">Sell</a></li>
@@ -78,7 +84,7 @@
                         <li><a href="{{ url_for('home') }}">Home</a></li>
                         <li><a href="">Order</a></li>
                         <div class="cart">
-                            <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="{{ url_for('view_cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                             <p>0</p>
                         </div>
                         <li><a href="{{ url_for('upload_products') }}">Sell</a></li>
@@ -120,6 +126,9 @@
     {% block description %}{% endblock %}
 
     {% block upload_products %}{% endblock %}
+
+    {% block shopping_cart %}{% endblock %}
+
     
     <footer>
         <div class="footer-section">
