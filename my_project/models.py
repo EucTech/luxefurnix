@@ -75,3 +75,10 @@ class Review(db.Model):
     products = db.relationship('Product', back_populates='reviews')
     user = db.relationship('User', backref='author', lazy=True)
 
+
+class ShoppingCart(db.Model):
+    """This is a data model for shopping cart"""
+    id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True, nullable=False)
+    user_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
+    product_id = db.Column(db.String(36), db.ForeignKey('product.id', ondelete='CASCADE'), nullable=False)
+    quantity = db.Column(db.Integer, default=0)
