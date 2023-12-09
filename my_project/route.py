@@ -191,6 +191,7 @@ def view_cart():
         item.product = Product.query.get_or_404(item.product_id)
         
     form = ShoppingCartForm()
+    
     return render_template('shopping_cart.html', cart=cart, form=form)
 
 
@@ -207,8 +208,10 @@ def add_to_cart(product_id):
 
     db.session.add(cart)
     db.session.commit()
+    
+    count_cart = ShoppingCart.query.filter_by(user_id=current_user.id).count()
         
-    return jsonify({'message': 'Product added to cart!'})
+    return jsonify({'message': 'Product added to cart!', 'count_cart': count_cart})
 
 
 @app.route("/shopping-cart/<string:product_id>", methods=['DELETE'])
@@ -221,7 +224,19 @@ def delete_from_cart(product_id):
     if cart:
         db.session.delete(cart)
         db.session.commit()
-        return jsonify({'message': 'Item deleted from the cart!'}), 200
+        
+        count_cart = ShoppingCart.query.filter_by(user_id=current_user.id).count()
+        return jsonify({'message': 'Item deleted from the cart!', 'count_cart': count_cart}), 200
     else:
         return jsonify({'error': 'Item not found in the cart!'}), 404
     
+
+@app.context_processor
+def global_variables():
+    if current_user.is_authenticated:
+        cart = ShoppingCart.query.filter_by(user_id=current_user.id).all()
+        count_cart = len(cart)
+    else:
+        count_cart = 0
+        
+    return dict(count_cart=count_cart)
