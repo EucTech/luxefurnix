@@ -1,7 +1,7 @@
 import os
 import secrets
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request, abort
+from flask import render_template, url_for, flash, redirect, request, abort, jsonify
 from my_project import app, db, bcrypt
 from my_project.forms import SignupForm, LoginForm, UploadProductForm, ReviewForm, ShoppingCartForm
 from my_project.models import User, Product, Category, Review, ShoppingCart
@@ -176,30 +176,52 @@ def submit_review(product_id):
         db.session.add(review)
         db.session.commit()
         return redirect(url_for('home'))
-    return render_template('description.html', title=product.product_name, product=product, review=review, form=form)
+    
+    return render_template('description.html', title=product.product_name, product=product, review=review, form=form, cart=cart)
 
 
-@app.route("/shopping-cart/>", methods=['GET', 'POST'])
+@app.route("/shopping-cart", methods=['GET', 'POST'])
 @login_required
 def view_cart():
     """This a route to view for cart"""
-    form = ShoppingCartForm()
-    cart = ShoppingCart.query.all()
+    cart = ShoppingCart.query.filter_by(user_id=current_user.id).all()
     
+    # Make sure to load the associated product for each cart item
+    for item in cart:
+        item.product = Product.query.get_or_404(item.product_id)
+        
+    form = ShoppingCartForm()
     return render_template('shopping_cart.html', cart=cart, form=form)
 
 
-@app.route("/shopping-cart/<string:product_id>", methods=['POST'])
+@app.route("/add-to-cart/<string:product_id>", methods=['POST'])
 @login_required
-def shopping_cart(product_id):
+def add_to_cart(product_id):
     """This a route for cart"""
-    form = ShoppingCartForm()
-    
+    product = Product.query.get_or_404(product_id)
+
     cart = ShoppingCart(
-        quantity=form.quantity.data,
         user_id=current_user.id,
         product_id=product.id
     )
+
+    db.session.add(cart)
+    db.session.commit()
+        
+    return jsonify({'message': 'Product added to cart!'})
+
+
+@app.route("/shopping-cart/<string:product_id>", methods=['DELETE'])
+@login_required
+def delete_from_cart(product_id):
+    """This a route that deletes items from cart"""
+    cart = ShoppingCart.query.filter_by(
+        user_id=current_user.id, product_id=product_id).first()
     
-    return render_template('shopping_cart.html', form=form, cart=cart)
+    if cart:
+        db.session.delete(cart)
+        db.session.commit()
+        return jsonify({'message': 'Item deleted from the cart!'}), 200
+    else:
+        return jsonify({'error': 'Item not found in the cart!'}), 404
     
