@@ -75,10 +75,24 @@ class Review(db.Model):
     products = db.relationship('Product', back_populates='reviews')
     user = db.relationship('User', backref='author', lazy=True)
 
+    def __repr__(self):
+        return f"Review('{self.id}', '{self.fullname}', '{self.review_text}', '{self.rating}')"
+
 
 class ShoppingCart(db.Model):
     """This is a data model for shopping cart"""
     id = db.Column(db.String(36), default=lambda: str(uuid.uuid4()), primary_key=True, nullable=False)
     user_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
     product_id = db.Column(db.String(36), db.ForeignKey('product.id', ondelete='CASCADE'), nullable=False)
-    quantity = db.Column(db.Integer, default=0)
+    quantity = db.Column(db.Integer, default=1)
+    total = db.Column(db.Float)
+
+
+    def calculate_total(self):
+        """Implement your logic to calculate the total based 
+        on product price and quantity"""
+        product = Product.query.get_or_404(self.product_id)
+        self.total = product.price * self.quantity
+    
+    def __repr__(self):
+        return f"ShoppingCart(user_id={self.user_id}, product_id={self.product_id}, quantity={self.quantity}, total={self.total})"
