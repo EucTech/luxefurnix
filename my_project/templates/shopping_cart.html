@@ -17,27 +17,33 @@
             <div class="heading">
                 <h2>Shopping Cart</h2>
             </div>
+            {% if cart %}
+            {% for item in cart %}
             <div class="list">
-                <div class="product-image ">
-                </div>
+                <div class="product-image"
+                style="background-image: url('{{ url_for('static', filename='images/products/' + item.product.product_images) }}')"></div>
                 <div class="main">
-                    <h3>Armless Chair</h3>
-                    <h4>$150.00</h4>
+                    <h3>{{ item.product.product_name }}</h3>
+                    <h4>${{ item.product.price }}</h4>
                     <span>
                         <h5>Color:</h5>
-                        <h6>White</h6>
+                        <h6>{{ item.product.color }}</h6>
                     </span>
                 </div>
             </div>
-            <form class="processs" action="" method="POST">
+            <form class="process" action="" method="POST">
                 {{ form.hidden_tag() }}
                <h4>Qty:</h4>
-                <!-- <input type="number"> -->
-                {{ form.quantity() }}
-                <h4><span class="total">Total:</span> 100</h4>
-               <span class="delete"><a href="">Delete</a></span>
+                <input type="number" class="quantity" name="quantity" data-product-id="{{ item.product_id }}" value="{{ item.quantity }}">
+                <!-- {{ form.quantity() }} -->
+                <h4><span class="total">Total: $</span>{{ item.total }}</h4>
+               <span class="delete"><a href="" class="delete-from-cart" data-product-id="{{ item.product_id }}" >Delete</a></span>
                <button id="btn">Pay Now</button>
             </form>
+            {% endfor %}
+            {% else %}
+                <h4>Shopping cart is empty</h4>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
