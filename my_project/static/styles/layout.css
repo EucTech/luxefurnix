@@ -149,11 +149,11 @@ nav {
 }
 
 .display-msg.success {
-    width: 30%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #80f79c;
+    background-color: #36314d;
     color: #ffffff;
     padding: 4px;
     border-radius: 10px;

@@ -71,7 +71,7 @@ ul {
 .shopping_cart .list .product-image {
     width: 100%;
     height: 15em;
-    background-image: url("/static/images/Chairs/Chair_1.jpg");
+    /* background-image: url("/static/images/Chairs/Chair_1.jpg"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -120,7 +120,7 @@ ul {
     font-family: 'Ubuntu', sans-serif;
 }
 
-.shopping_cart .processs {
+.shopping_cart .process {
     width: 100%;
     display: flex;
     align-items: center;
@@ -129,7 +129,7 @@ ul {
     margin-top: 30px;
 }
 
-.shopping_cart .processs input {
+.shopping_cart .process input {
     width: 12%;
     outline: none;
     border: 1px solid var(--navlinkcolor);
@@ -137,30 +137,30 @@ ul {
     border-radius: 5px;
 }
 
-.shopping_cart .processs .total {
+.shopping_cart .process .total {
     color: var(--navlinkcolor);
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
 }
 
-.shopping_cart .processs h4{
+.shopping_cart .process h4{
     color: var(--goldcolor);
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
 }
 
-.shopping_cart .processs h4 span{
+.shopping_cart .process h4 span{
     color: black;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.shopping_cart .processs .delete {
+.shopping_cart .process .delete {
     border-left: 2px solid var(--navlinkcolor);
     border-right: 2px solid var(--navlinkcolor);
     padding: 0 10px;
 }
 
-.shopping_cart .processs a {
+.shopping_cart .process a {
     font-size: 16px;
     font-family: 'Ubuntu', sans-serif;
     color: var(--navlinkcolor);
@@ -168,7 +168,7 @@ ul {
 
 }
 
-.shopping_cart .processs button {
+.shopping_cart .process button {
     border: none;
     outline: none;
     background-color: var(--navlinkcolor);
@@ -178,29 +178,29 @@ ul {
     cursor: pointer;
 }
 
-.shopping_cart .processs button:hover {
+.shopping_cart .process button:hover {
     opacity: 0.9;
 }
 
 /* shopping_cart screen sizes */
 @media only screen and (max-width: 450px) {
-    .shopping_cart .processs {
+    .shopping_cart .process {
        gap: 10px;
     }
 
-    .shopping_cart .processs h4 {
+    .shopping_cart .process h4 {
         font-size: 14px;
     }
 
-    .shopping_cart .processs .total {
+    .shopping_cart .process .total {
         font-size: 14px;
     }
 
-    .shopping_cart .processs .total {
+    .shopping_cart .process .total {
         font-size: 14px;
     }
 
-    .shopping_cart .processs button {
+    .shopping_cart .process button {
         font-size: 14px;
         padding: 4px;
     }    
@@ -227,7 +227,7 @@ ul {
 }
 
 @media only screen and (max-width: 900px) {
-    .shopping_cart .processs .progress {
+    .shopping_cart .process .progress {
         gap: 80px;
     }
 
@@ -239,11 +239,11 @@ ul {
         width: 90%;
     }
 
-    .shopping_cart .processs .progress-info {
+    .shopping_cart .process .progress-info {
         gap: 40px;
     }
 
-    .shopping_cart .processs .progress-info p {
+    .shopping_cart .process .progress-info p {
         font-size: 14px;
     }
 

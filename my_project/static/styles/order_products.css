@@ -130,24 +130,24 @@ ul {
     margin-top: 40px;
 }
 
-.order .processs .progress {
+.order .processs .order-progress {
     display: flex;
     gap: 120px;
 }
 
-.order .processs .progress span{
+.order .processs .order-progress span{
     width: 1.5em;
     height: 1.5em;
     border-radius: 50%;
     border: 2px var(--lightdark) solid;
 }
 
-.order .processs .progress-info {
+.order .processs .order-progress-info {
     display: flex;
     gap: 70px;
 }
 
-.order .processs .progress-info p {
+.order .processs .order-progress-info p {
     color: var(--navlinkcolor);
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -175,7 +175,7 @@ ul {
 }
 
 @media only screen and (max-width: 900px) {
-    .order .processs .progress {
+    .order .processs .order-progress {
         gap: 80px;
     }
 
@@ -187,11 +187,11 @@ ul {
         width: 90%;
     }
 
-    .order .processs .progress-info {
+    .order .processs .order-progress-info {
         gap: 40px;
     }
 
-    .order .processs .progress-info p {
+    .order .processs .order-progress-info p {
         font-size: 14px;
     }
 

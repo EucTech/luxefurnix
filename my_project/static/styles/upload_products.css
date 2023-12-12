@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Ubuntu', sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+:root {
+    --goldcolor: #c7750a;
+    --navcolor: #FAF6F0;
+    --navlinkcolor: #001B79;
+    --lightgrey:#EEF5FF;
+    --lightdark:#5e5656;
+}
+
+nav {
+    margin-bottom: 0;
+}
+
+.upload-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--lightgrey);
+    padding: 30px 0;
+}
+
+.upload-container form {
+    border: 2px var(--navlinkcolor) solid;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+}
+
+.upload-container h2 {
+    color: var(--goldcolor);
+    font-family: 'Roboto', sans-serif; 
+    margin-bottom: 20px;
+}
+
+.upload-container label {
+    color: var(--navlinkcolor);
+    font-family: 'Ubuntu', sans-serif; 
+    margin-bottom: 5px;
+}
+
+.upload-container .submit {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+
+/* Screen sizes for uplaod_products */
+
+@media only screen and (max-width: 992px) {
+    .upload-container form {
+        width: 50%;
+    }
+
+}
+
+@media only screen and (max-width:800px) {
+    .upload-container form {
+        width: 60%;
+    }
+
+}
+
+@media only screen and (max-width:680px) {
+    .upload-container form {
+        width: 70%;
+    }
+
+}
+
+@media only screen and (max-width:580px) {
+    .upload-container form {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .upload-container .submit {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .upload-container form {
+        width: 90%;
+    }
+
+    .upload-container .submit {
+        width: 60%;
+    }
+}
