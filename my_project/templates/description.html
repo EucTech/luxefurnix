@@ -10,8 +10,11 @@
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!-- layout.js script -->
+{% block description_js %}
+<!-- description.js script -->
 <script defer src="{{ url_for('static', filename='scripts/description.js') }}"></script>
+{% endblock %}
+
 
 {% block description %}
 
@@ -34,10 +37,12 @@
                 <h5>Color:</h5>
                 <h6>{{ product.color }}</h6>
             </span>
-            <div class="carty">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <p>Add to cart</p>
-            </div>
+            <form action="" id="cart-form" method="POST">
+                <div class="carty" data-product-id="{{ product.id }}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p class="add-to-cart" >Add to cart</p>
+                </div>
+            </form>
         </div>
     </div>
     <div class="description-text">

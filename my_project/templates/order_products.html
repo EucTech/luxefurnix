@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 
-{% block order_styles %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/order.css') }}">
+{% block order_products_styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/order_products.css') }}">
 {% endblock %}
 
-{% block order %}
+{% block order_products %}
 <div class="order">
     <div class="order-section">
         <div class="heading">
@@ -23,12 +23,12 @@
             </div>
         </div>
         <div class="processs">
-            <div class="progress">
+            <div class="order-progress">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="progress-info">
+            <div class="order-progress-info">
                 <p>Processing</p>
                 <p>Delivered</p>
                 <p>Completed</p>

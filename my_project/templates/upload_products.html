@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 
+{% block upload_products_styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/upload_products.css') }}">
+{% endblock %}
+
 {% block upload_products %}
+<div class="upload-container">
     <h2>Upload Product</h2>
     <form method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
@@ -31,4 +36,6 @@
 
         {{ form.submit(class="submit btn btn-primary") }}
     </form>
+</div>
+
 {% endblock %}

@@ -1,18 +1,13 @@
 {% extends "layout.html" %}
 
+{% block home_js %}
+<!-- home.js script -->
+<script defer src="{{ url_for('static', filename='scripts/home.js') }}"></script>
+{% endblock %}
+
 {% block home_styles %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/products.css') }}">
-    <!-- {% for product in categories.products %}
-    <style>
-        .categories .items .product .product_photo {
-        background-image: url("{{ url_for('static', filename='images/products/' + product.product_images)}}");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        }
-    </style>
-    {% endfor %} -->
 {% endblock %}
 
 {% block home %}
@@ -117,9 +112,9 @@
                         <i class="fa-solid fa-star"></i>
                     </div>
                     <h6>${{'%0.2f'|format(product.price|float) }}</h6>
-                    <div class="carty">
+                    <div class="carty" data-product-id="{{ product.id }}">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <p>Add to cart</p>
+                        <p id="add-to-cart">Add to cart</p>
                     </div>
                 </div>
             </div>

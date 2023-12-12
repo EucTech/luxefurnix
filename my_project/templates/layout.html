@@ -21,8 +21,15 @@
     <!-- layout.js script -->
     <script defer src="{{ url_for('static', filename='scripts/layout.js') }}"></script>
 
+    <script defer src="{{ url_for('static', filename='scripts/description.js') }}"></script>
+    
+    <script defer src="{{ url_for('static', filename='scripts/home.js') }}"></script>
+
     <!-- shopping_cart.js script -->
     {% block shopping_cart_js %}{% endblock %}
+
+    <!-- description.js script -->
+    {% block description_js %}{% endblock %}
 
     <!-- favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/luxefurnix_favicon.png') }}">
@@ -44,6 +51,12 @@
 
     <!-- shopping_cart css -->
     {% block shopping_cart_style %}{% endblock %}
+
+    <!-- upload_products_cart css -->
+    {% block upload_products_styles %}{% endblock %}
+
+    <!-- order_cart css -->
+    {% block order_products_styles %}{% endblock %}
 
     {% if title %}
         <title>{{ title }}</title>
@@ -70,10 +83,10 @@
                 {% if current_user.is_authenticated %}
                     <ul class="nav_items">
                         <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="">Order</a></li>
+                        <li><a href="{{ url_for('order') }}">Order</a></li>
                         <div class="cart">
                             <a href="{{ url_for('view_cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
-                            <p>0</p>
+                            <p id="cart-count">{{ count_cart }}</p>
                         </div>
                         <li><a href="{{ url_for('upload_products') }}">Sell</a></li>
                         <li><a href="">Account</a></li>
@@ -82,10 +95,10 @@
                 {% else %}
                     <ul class="nav_items">
                         <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="">Order</a></li>
+                        <li><a href="{{ url_for('order') }}">Order</a></li>
                         <div class="cart">
                             <a href="{{ url_for('view_cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
-                            <p>0</p>
+                            <p id="cart-count">{{ count_cart }}</p>
                         </div>
                         <li><a href="{{ url_for('upload_products') }}">Sell</a></li>
                         <li><a href="{{ url_for('register') }}">Sign In</a></li>
@@ -129,6 +142,7 @@
 
     {% block shopping_cart %}{% endblock %}
 
+    {% block order_products %}{% endblock %}
     
     <footer>
         <div class="footer-section">
