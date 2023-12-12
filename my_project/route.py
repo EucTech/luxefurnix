@@ -6,6 +6,7 @@ from my_project import app, db, bcrypt
 from my_project.forms import SignupForm, LoginForm, UploadProductForm, ReviewForm, ShoppingCartForm
 from my_project.models import User, Product, Category, Review, ShoppingCart
 from flask_login import login_user, current_user, logout_user, login_required
+from sqlalchemy.orm.exc import NoResultFound
 
 
 with app.app_context():
@@ -180,56 +181,96 @@ def submit_review(product_id):
     return render_template('description.html', title=product.product_name, product=product, review=review, form=form, cart=cart)
 
 
-@app.route("/shopping-cart", methods=['GET', 'POST'])
+@app.route("/shopping-cart", methods=['GET', 'POST', 'PUT'])
 @login_required
 def view_cart():
-    """This a route to view for cart"""
+    """This a route to view for cart"""    
     cart = ShoppingCart.query.filter_by(user_id=current_user.id).all()
     
     # Make sure to load the associated product for each cart item
     for item in cart:
         item.product = Product.query.get_or_404(item.product_id)
+
+        item.calculate_total()
         
     form = ShoppingCartForm()
     
-    return render_template('shopping_cart.html', cart=cart, form=form)
+    return render_template('shopping_cart.html', cart=cart, title='Shopping-cart', form=form)
 
 
-@app.route("/add-to-cart/<string:product_id>", methods=['POST'])
+@app.route("/shopping-cart/<string:product_id>", methods=['GET', 'POST'])
 @login_required
 def add_to_cart(product_id):
     """This a route for cart"""
-    product = Product.query.get_or_404(product_id)
+    if current_user.is_authenticated:
+        product = Product.query.get_or_404(product_id)
+        try:
+            cart = ShoppingCart.query.filter_by(
+                user_id=current_user.id,
+                product_id=product.id
+            ).one()
+        except NoResultFound:
+            cart = ShoppingCart(
+                user_id=current_user.id,
+                product_id=product.id,
+                quantity=1,
+                total=product.price
+            )
 
-    cart = ShoppingCart(
-        user_id=current_user.id,
-        product_id=product.id
-    )
-
-    db.session.add(cart)
-    db.session.commit()
-    
-    count_cart = ShoppingCart.query.filter_by(user_id=current_user.id).count()
+            db.session.add(cart)
+            db.session.commit()            
+        count_cart = ShoppingCart.query.filter_by(user_id=current_user.id).count()
         
     return jsonify({'message': 'Product added to cart!', 'count_cart': count_cart})
+    # return render_template('description.html', count_cart=count_cart, cart=cart)
 
+
+@app.route("/shopping-cart/<string:product_id>", methods=['POST', 'PUT'])
+@login_required
+def update_quantity(product_id):
+    """This route updates the quantity of item in the cart"""
+    if current_user.is_authenticated:
+        quantity = request.form.get('quantity')
+        
+        if not quantity:
+            abort(400, {'error': 'Quantity is missing'})
+            
+        cart = ShoppingCart.query.filter_by(
+            user_id=current_user.id,
+            product_id=product_id
+        ).first()
+        
+        if cart:
+            cart.quantity = int(quantity)
+            total = cart.calculate_total()
+            db.session.commit()
+            return jsonify({'message': 'Cart quantity updated successfully', 'total': total})
+        else:
+            abort(400, {'error': 'Product not found in the cart'})
+        
 
 @app.route("/shopping-cart/<string:product_id>", methods=['DELETE'])
 @login_required
 def delete_from_cart(product_id):
     """This a route that deletes items from cart"""
-    cart = ShoppingCart.query.filter_by(
-        user_id=current_user.id, product_id=product_id).first()
-    
-    if cart:
-        db.session.delete(cart)
-        db.session.commit()
+    if current_user.is_authenticated:
+        cart = ShoppingCart.query.filter_by(
+            user_id=current_user.id, product_id=product_id).first()
         
-        count_cart = ShoppingCart.query.filter_by(user_id=current_user.id).count()
-        return jsonify({'message': 'Item deleted from the cart!', 'count_cart': count_cart}), 200
-    else:
-        return jsonify({'error': 'Item not found in the cart!'}), 404
-    
+        if cart:
+            db.session.delete(cart)
+            db.session.commit()
+            
+            count_cart = ShoppingCart.query.filter_by(user_id=current_user.id).count()
+            return jsonify({'message': 'Item deleted from the cart!', 'count_cart': count_cart}), 200
+        else:
+            return jsonify({'error': 'Item not found in the cart!'}), 404
+        
+
+@app.route("/order", methods=['GET', 'POST'])
+@login_required
+def order():
+    return render_template("order_products.html", title='Order')
 
 @app.context_processor
 def global_variables():
