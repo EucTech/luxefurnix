@@ -14,9 +14,12 @@ db_pwd = os.environ['DB_PWD']
 db_name = os.environ['DB_NAME']
 db_host = os.environ['DB_HOST']
 
+# Secret key
+secret_key = os.environ.get('SECRET_KEY', 'default_secret_key')
+
 app = Flask(__name__)
 # For secret key
-app.config['SECRET_KEY'] = 'a2852701f7354a86b0a291cabaaf9df3'
+app.config['SECRET_KEY'] = secret_key
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://{db_user}:{db_pwd}@{db_host}/{db_name}".format(
     db_user=db_user, db_pwd=db_pwd, db_host=db_host, db_name=db_name)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
