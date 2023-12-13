@@ -198,7 +198,7 @@ def view_cart():
     return render_template('shopping_cart.html', cart=cart, title='Shopping-cart', form=form)
 
 
-@app.route("/shopping-cart/<string:product_id>", methods=['GET', 'POST'])
+@app.route("/add-to-cart/<string:product_id>", methods=['GET', 'POST'])
 @login_required
 def add_to_cart(product_id):
     """This a route for cart"""
