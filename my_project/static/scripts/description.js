@@ -11,7 +11,7 @@ $(document).ready(function () {
         // Make a request to the database using ajax
         $.ajax({
             type: 'POST',
-            url: `/shopping-cart/${productId}`,
+            url: `/add-to-cart/${productId}`,
             data: formData,
             success: function (response) {
                 // Update the cart count in the UI

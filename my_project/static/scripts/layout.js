@@ -43,7 +43,7 @@ function showSlide(index) {
     for (let i = 0; i < smSlide.length; i++) {
         smSlide[i].classList.remove("sm-active");
     }
-
+    
     smSlide[index].classList.add("sm-active");
 }
 
