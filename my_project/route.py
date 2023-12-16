@@ -23,7 +23,7 @@ with app.app_context():
     # db.session.add(c2)
     # db.session.add(c3)
     # db.session.add(c4)
-    # db.session.commit()
+   
    
 @app.route("/")
 @app.route("/home")
