@@ -274,6 +274,7 @@ def order():
 
 @app.context_processor
 def global_variables():
+    """For global use"""
     if current_user.is_authenticated:
         cart = ShoppingCart.query.filter_by(user_id=current_user.id).all()
         count_cart = len(cart)
