@@ -1,4 +1,4 @@
-# Luxefurnix E-commerce
+# Luxefurnix E-commerce - Buy your luxurious furrnitures
 
 Luxefurnix(Redefining Furniture Elegance and Comfort) is an E-commerce web application for quality furniture. It is built to solve the challenge of connecting furniture producers with customers seeking luxurious and cozy furniture. The project provides an online marketplace where customers can browse and purchase high-quality furniture. Additionally, it ensures a seamless transaction process where the purchased product is promptly delivered within 24 hours after payment. The use of an Escrow system guarantees a secure transaction: when the customer pays, the money is held in Escrow until the product is received and approved by the customer, at which point the funds are released to the producer.
 
